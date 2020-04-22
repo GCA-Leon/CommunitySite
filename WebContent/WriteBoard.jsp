@@ -294,7 +294,48 @@
             margin : 10px;
             padding-left: 30px;
         }
+         /* 2020.04.21 지원홍 */
+        #sidemypage {
+            position: relative;
+            height: 100px;
+            background: #4682B4;
+        }
         
+        #sidemypage > i {
+            position: absolute;
+            top: 25px;
+            left: 5px;
+            color: white;
+        }
+        
+        #sidemypage > div:nth-child(2) {
+            position: absolute;
+            top: 30px;
+            left: 60px;
+            font-size: 14px;
+            color: white;
+        }
+        
+        #sidemypage > div:nth-child(3) {
+            position: absolute;
+            top: 50px;
+            left: 60px;
+            font-size: 14px;
+            color: #D5D5D5;
+        }       
+        
+        #myPageBtn {
+        	position: absolute;
+        	width: 70px;
+        	height: 25px;
+            top: 50px;
+            left: 60px;
+            font-size: 14px;
+            border-radius: 10px;
+            background-color: white;
+            color: #4682B4;
+        }
+        /* 2020.04.21 지원홍 */
         /*로그인창*/
         #loginWrap{
             display: none;
@@ -525,7 +566,21 @@
                 padding-top: 5px;
             }
         }
-        
+        /* 2020.04.21 지원홍 */
+        /* 웹페이지의 사이즈를 줄이면 글씨의 밀려서 반응형 설정 */
+        @media(max-width:700px){
+
+            #sidemypage > div:nth-child(2) {
+                left: 70px;
+                width: 70px;
+                font-size: 14px;
+            }
+
+            #sidemypage > div:nth-child(3) {
+                display: none;
+            }       
+        }
+        /* 2020.04.21 지원홍 */
     </style>
 </head>
 <body>
@@ -727,9 +782,42 @@
     </footer>
          <sidebar>
         <div id="side">
-        <div id="sideimg">
-            <img src="img/sideimg.PNG">
+        <!-- 2020.04.21 지원홍  -->
+            <%try{
+            	boolean loginck = (boolean)session.getAttribute("loginck");
+            	if(loginck != true){ 
+           	%>
+           	     <div id="sidemypage" onclick="loginfun()">
+           		 <i class="fas fa-user-circle fa-3x"></i>
+           		 <div>로그인 및 회원가입</div>
+           		 <div>회원가입하세요!</div>
+          
+           	<%
+            	} else if(loginck == true){
+            		/* 로그인이 되었다면 세션에 저장된 id와 nickname을 가져와서 변수에 담음 */
+            		String loginUserId = (String)session.getAttribute("loginUserId");
+            		String loginUserNick = (String)session.getAttribute("loginUserNickname");
+            %>
+            	<div id="sidemypage">
+           		<i class="fas fa-user-circle fa-3x"></i>
+            	<div><%=(String)session.getAttribute("loginUserNickname")%>님 안녕하세요</div> <!-- nickname을 표시해야 하는데 자꾸 null 떠서 임시로 id를 표시함  -->
+            	<form name="mypageform">
+            		<input id="myPageBtn" type="button" value="My Page" onclick="mypagefun()">
+              	</form>
+            <%
+            	}
+            } catch(NullPointerException e){
+            %>
+            	<div id="sidemypage" onclick="loginfun()">
+           		<i class="fas fa-user-circle fa-3x"></i>
+            	<div>로그인 및 회원가입</div>
+           		<div>회원가입하세요!</div>
+            <%
+            }
+            %>
+
         </div>
+        <!-- 2020.04.21 지원홍  -->
         <div id="sidemenu">
             <div class="sidemenus">
                 <div class="sidemenut">개드립</div>
@@ -1085,6 +1173,20 @@
         	});    
             
         });
+        /* 2020.04.21 지원홍 */
+        /* 클릭 시 로그인 화면이 fadeIn으로 나타나면서 sidebar는 사라짐 */
+        function loginfun(){
+            $("#loginWrap").css("z-index", 100);
+            $("sidebar").css("display", "none");
+            $("#loginWrap").fadeIn(); 
+           /*  수정 */
+		}
+        
+        /* 마이페이지 버튼을 누르면 이동 */
+        function mypagefun(){
+			location.href="MyPage.do";
+        }
+        /* 2020.04.21 지원홍 */
     </script>
 </body>
 </html>

@@ -25,15 +25,18 @@ public class LoginPage implements Action {
 			System.out.println("로그인 성공");
 			request.setAttribute("loginck", true);
 			String nickname = dao.getNickName(id);
+			String email = dao.idToEmail(id);
 			// 2020.04.21 지원홍
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginUserId", id);
 			session.setAttribute("loginUesrPw", pw);
 			session.setAttribute("loginUserNickname", nickname);
+			session.setAttribute("loginUserEmail", email);
 			System.out.println("-----세션에 저장된 값들------");
 			System.out.println("loginUserId : " + id);
 			System.out.println("loginUesrPw : "+ pw);
 			System.out.println("loginUserNickname : " + nickname);
+			System.out.println("loginUserEmail : " + email);
 			System.out.println("-----------------------");
 			// 2020.04.21 지원홍	
 			System.out.println("loginPage_Nickname: "+nickname);

@@ -422,21 +422,8 @@
             text-align: center;
             font-size: 13px;
         }
-        #wellcome{
-        	width:500px;
-	        background: snow;
-	        height: 700px;
-	        padding:  80px 40px;
-	        border-radius: 10px;
-	        position: absolute;
-	        left: 50%;
-	        top: 500px;
-	        transform: translate(-50%,-50%);	        
-        }
-        #wellcome img{
-        	width : 400px;
-        	padding-left: 0px;
-        }
+        
+        
 /*회원가입폼*/
         #signup-form{
         width:500px;
@@ -838,12 +825,49 @@
             </div>  
         </header>
         
-        <main>
-           <div id="wellcome">
-            	<img src="https://i.imgur.com/DGz8PMa.png" width="500px" height="500px"><br><br>
-            	 <input type="button" id= "signUpBtn" class="signupbtn" value="메인으로 가기">
-           </div>
+        <main> 
+           <form id="signup-form" action="join.do" method="post">
+            <h1>My Page</h1>            
+                <div class="txts">
+                    <input type="text" id="idtf" name="id"  value="<%= session.getAttribute("loginUserId") %>" readonly>
+                    <span data-placeholder="아이디"></span>
+                    <% System.out.println("loginUserId="+session.getAttribute("loginUserId"));%>
+                </div>
+	            <div class="txts">
+	                <input type="text" id="email" name="email" value="<%= session.getAttribute("loginUserEmail") %>" readonly>
+	                <span data-placeholder="이메일"></span>
+	            </div>
+	            <div class="txts">
+	                <input type="text" id="nick" name="nick" value="<%= session.getAttribute("loginUserNickname") %>">
+	                <span data-placeholder="닉네임"></span>                
+	                <input type="button" value="수정하기" id="confire" class="nickC">
+	            </div>    
+	            <div class="txts">
+	                <input type="password" id="pw1" name="pw" value="<%= session.getAttribute("pw1") %>">
+	                <span data-placeholder="비밀 번호"></span>          
+	                <%System.out.println("pw1 : "+session.getAttribute("pw1")); %>      
+	            </div>
+	            
+	            <div class="txts">
+	                <input type="password" id="pw2" name="pwck" value="<%= session.getAttribute("pw2") %>">
+	                <span data-placeholder="비밀 번호 확인"></span>
+	                <%System.out.println("pw2 : "+session.getAttribute("pw2")); %>
+	                <input type="button" value="수정하기" id="confire" class="pwc">
+	            </div>
+	            
+	            
+	            
+            
+            
+            
+
+                <input type="button" id= "signUpBtn" class="signupbtn" value="메인으로 가기">
+                <div class="bottom-text2">                    
+                </div>
+            </form> 
         </main>
+       <!--  <iframe name='ifrm' width='0' height='0' frameborder='0'></iframe> -->
+        <input type="hidden" id="orgcode1" name="vcode" value="<%= session.getAttribute("orgcode1") %>">
  <footer>
         <div id="footme">
             <a href="https://www.dogdrip.net/dogdrip">개드립</a>
@@ -1217,7 +1241,238 @@
         		location.href="goLogout.do";
         	});
         	
+        	$(".idC").click(function(){
+        		var id = $("#idtf").val();   
+        		var pw1 = $("#pw1").val();
+        		var pw2 = $("#pw2").val();
+        		if(id != ""){ // id 체크 페이지 이동        			
+        			if(id.length > 12){ // id 길이 제한
+        				alert("아이디는 12글자까지 가능합니다.");
+        			} else {        				
+        				location.href="signUP2.do?id="+id+"&num=1"+"&pw1="+pw1+"&pw2="+pw2;
+        			}
+        		}else{
+        			alert("아이디를 입력해주세요");
+        		}
+        	});
+        	$(".nickC").click(function(){
+        		var nick = $("#nick").val();
+        		var pw1 = $("#pw1").val();
+        		var pw2 = $("#pw2").val();
+        		//alert($("#idtf").val());
+        		if(nick !=""){
+        			$.ajax({
+           				url: "Update.jsp",
+           				type: "post",
+           				dataType: "json",
+           				
+           				data: {/* upNum : $("#pressup").val(),
+           					   boardname : $("#hbn").val(),
+           					   press : "up",
+           					   idx : $("#hidx").val(),
+           					   nickname : $("#hnn").val() */
+           					   action : "Mypage_NicknameUpdate",
+           					   id : $("#idtf").val(),
+           					   nick : $("#nick").val()
+           					   },      				
+           					  
+           				success: function(data){
+           					//alert("통신 성공^^");
+           					/* $("#pressup").val(data.result);
+           					
+           					if(data.already == "already"){
+           						alert("이미 추천 하셨습니다.");
+           					} */
+           					if(data.result){
+           						alert("닉네임 변경을 성공하셨습니다.");
+           						$("#nick").removeClass("fail");
+           						setTimeout(function() {
+           						   $("#nick").addClass("success");
+           						},1);         
+           					}else{
+           						$("#nick").val("중복된 닉네임입니다.");
+           						$("#nick").removeClass("success");
+           						setTimeout(function() {
+           						   $("#nick").addClass("fail");
+           						},1); 
+           						$("#nick").focus();
+           					}
+           				},
+           				complete: function(data){
+           					
+           				},
+           				error: function(request,status,error){
+           					
+           					alert("통신 실패 ㅜㅜ");
+           				}       						
+            		});
+				}else{
+					alert("닉네임을 입력해주세요");
+				}
+        	});
         	
+        	/* 비밀번호체크 */
+        	$(".pwc").click(function(){
+        		var nick = $("#nick").val();
+        		var pw1 = $("#pw1").val();
+        		var pw2 = $("#pw2").val();
+        		//alert($("#idtf").val());
+        		
+        		 if(pw1 == pw2 && pw1!="" && pw2!=""){
+        			$.ajax({
+           				url: "Update.jsp",
+           				type: "post",
+           				dataType: "json",           				
+           				data: {
+           					   action : "MyPage_PasswordUpdate",           				
+           					   id : $("#idtf").val(),
+           					   nick : $("#nick").val(),
+           					   pw : $("#pw1").val()
+           					   },      
+           				success: function(data){
+           					alert("비밀번호 변경을 성공 하셨습니다.");           					
+           					 if(data.result){
+           						$("#pw1").removeClass("fail");
+           						$("#pw2").removeClass("fail");
+           						$("#pw1").addClass("success");
+           						$("#pw2").addClass("success");
+           					}else{           						
+           						$("#pw1").addClass("fail");
+           						$("#pw2").addClass("fail");
+           						$("#pw2").focus();
+           					} 
+           				},
+           				complete: function(data){
+           					
+           				},
+           				error: function(request,status,error){
+           					
+           					alert("통신 실패 ㅜㅜ");
+           				}       						
+            		});
+				}else{
+					alert("비밀번호가 서로 일치 하지 않거나 입력하지 않았습니다.");
+					 $("#pw2").addClass("focus");
+					 $("#pw2").focus();
+				} 
+        	});
+        	
+        	//이메일 부분
+        	if($("#email").val()!="null" && $("#email").val()!='duplication'){
+        		$("#email").addClass("success");
+        		$("#email").addClass("focus");
+        	}else if($("#email").val()=='duplication'){
+        		$("#email").val('이미 등록된 이메일이있습니다.');
+        		$("#email").focus();
+        		$("#email").addClass("fail");
+        		$("#email").addClass("focus");
+        	}else{
+        		$("#email").val('');
+        	}
+        	$(".codeC").click(function(){
+        		var code = $("#vcode").val();
+        		var pw1 = $("#pw1").val();
+        		var pw2 = $("#pw2").val();
+        		if(code !=""){
+        			location.href="signUP2.do?code="+code+"&orgCode="+$("#orgcode1").val()+"&num=4"+"&pw1="+pw1+"&pw2="+pw2;
+        		}else{
+        			alert("인증번호를 입력해주세요");
+        		}
+        	});
+        	//아이디 부분
+        	if($("#idtf").val()!="null" && $("#idtf").val()!='duplication'){
+        		$("#idtf").addClass("success");
+        		$("#idtf").addClass("focus");
+        	}else if($("#idtf").val()=='duplication'){
+        		$("#idtf").val('');
+        		$("#idtf").focus();
+        		$("#idtf").addClass("fail");
+        		$("#idtf").addClass("focus");
+        	}else{
+        		$("#idtf").val('');
+        		$("#idtf").focus();
+        		$("#idtf").addClass("focus");
+        	}
+        	//1번째 비밀번호 부분
+        	if($("#pw1").val()!="null" && $("#pw1").val()!='nothing' ){
+        		$("#pw1").addClass("success");
+        		$("#pw1").addClass("focus");
+        		$("#pw2").addClass("success");
+        		$("#pw2").addClass("focus");
+        	}else if($("#pw1").val()=='nothing'){
+        		$("#pw1").val('');
+        		$("#pw1").addClass("fail");
+        		$("#pw1").addClass("focus");
+        		//$("#pw1").focus();
+        		$("#pw2").val('');
+        		$("#pw2").addClass("fail");
+        		$("#pw2").addClass("focus");
+        	}else{
+        		$("#pw1").val('');
+        		$("#pw2").val('');
+        	}
+        	
+        	        	
+        	//닉네임 부분
+        	if($("#nick").val()!="null" && $("#nick").val()!='duplication'){
+        		$("#nick").addClass("success");
+        		$("#nick").addClass("focus");
+        	}else if($("#nick").val()=='duplication'){
+        		$("#nick").val('');
+        		$("#nick").focus();
+        		$("#nick").addClass("fail");
+        		$("#nick").addClass("focus");
+        	}else{
+        		$("#nick").val('');
+        	}
+        	
+        	
+  		//비밀번호 포커스 땠을때      	
+        	/*  $("#pw1").on("blur",function(){ */
+        	$("#pw1").focusout(function(){
+        		
+        		var pw1 = $("#pw1").val();
+        		var pw2 = $("#pw2").val();
+        		$("#pw1").removeClass("fail");
+             	 $("#pw2").removeClass("fail");
+             	 $("#pw1").removeClass("success");
+             	 $("#pw2").removeClass("success");
+        		if(pw1!="" && pw2!=""){
+        			if(pw1 == pw2){        			 	 
+	                   	 $("#pw1").addClass("success");
+	                   	 $("#pw2").addClass("success");	
+        			}else{
+        				 $("#pw1").addClass("fail");
+	                   	 $("#pw2").addClass("fail");
+        			}
+        		}else{
+        			$("#pw1").addClass("fail");
+                  	$("#pw2").addClass("fail");
+        		}
+             }); 
+        	
+        	 /* $("#pw2").on("blur",function(){ */
+        	$("#pw2").focusout(function(){
+        		
+        		var pw1 = $("#pw1").val();
+        		var pw2 = $("#pw2").val();
+        		$("#pw1").removeClass("fail");
+             	 $("#pw2").removeClass("fail");
+             	 $("#pw1").removeClass("success");
+             	 $("#pw2").removeClass("success");
+        		if(pw1!="" && pw2!=""){
+        			if(pw1 == pw2){        			 	 
+	                   	 $("#pw1").addClass("success");
+	                   	 $("#pw2").addClass("success");	
+        			}else{
+        				 $("#pw1").addClass("fail");
+	                   	 $("#pw2").addClass("fail");
+        			}
+        		}else{
+        			$("#pw1").addClass("fail");
+                  	$("#pw2").addClass("fail");
+        		}
+             });
         	
         	 //로고 클릭
         	 $("#logo").click(function(){

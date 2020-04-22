@@ -577,7 +577,7 @@
 			isLogin = (boolean)request.getAttribute("loginck");
 			if(isLogin){
 				session.setAttribute("loginck", isLogin);
-				userNickname = (String)request.getAttribute("loginUserNickname");
+				userNickname = (String)session.getAttribute("loginUserNickname");
 				session.setAttribute("loginUserNickname", userNickname);
 				userId = (String)request.getAttribute("loginUserId");
 			}else{
@@ -712,7 +712,8 @@
 								<input type="button" id="loginBtn" value="로그인">
 						<%} else if(loginck == true) {
 								String loginUserId = (String)session.getAttribute("loginUserId");
-									System.out.println(loginUserId);
+									System.out.println("Main loginUserId: "+loginUserId);
+									System.out.println("Main loginUserNickName: "+userNickname);
 								%>		
 								<input type="button" id="logoutBtn" value="로그아웃">
 						<%} 
@@ -872,7 +873,7 @@
             %>
             	<div id="sidemypage">
            		<i class="fas fa-user-circle fa-3x"></i>
-            	<div><%=loginUserId%>님 안녕하세요</div> <!-- nickname을 표시해야 하는데 자꾸 null 떠서 임시로 id를 표시함  -->
+            	<div><%=(String)session.getAttribute("loginUserNickname")%>님 안녕하세요</div> <!-- nickname을 표시해야 하는데 자꾸 null 떠서 임시로 id를 표시함  -->
             	<form name="mypageform">
             		<input id="myPageBtn" type="button" value="My Page" onclick="mypagefun()">
               	</form>

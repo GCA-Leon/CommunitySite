@@ -99,7 +99,7 @@ public class DAO {
 		return result;
 	}
 		
-	public int update(DTO dto){
+	/*public int update(DTO dto){
 		int result = 0;
 		String query = "UPDATE usertb SET pw=?,nickName=? WHERE id=?";
 		Connection conn = null;
@@ -118,7 +118,7 @@ public class DAO {
 			pool.freeConnection(conn,pstmt);	
 		}
 		return result;
-	}
+	}*/
 	
 	
 	public Vector<ConDTO> conSelectAll(String tableName){
@@ -306,7 +306,7 @@ public class DAO {
 		}
 		
 		/*비밀번호변경*/
-		public int updatePw(String id,String pw){
+		/*public int updatePw(String id,String pw){
 			System.out.println("id:"+id+",pw:"+pw);
 			int result = 0;
 			String query = "UPDATE usertb SET pw=? WHERE id=?";
@@ -324,7 +324,7 @@ public class DAO {
 				pool.freeConnection(conn,pstmt);	
 			}
 			return result;
-		}
+		}*/
 		
 //		로그인
 		public boolean login(String loginId, String loginPw){
@@ -399,5 +399,90 @@ public class DAO {
 			}
 			//System.out.println("result = "+result);
 			return result;		
+		}
+		
+		/*비밀번호변경*/
+		public int updatePw(String id,String pw){
+			System.out.println("id:"+id+",pw:"+pw);
+			int result = 0;
+			String query = "UPDATE usertb SET pw=? WHERE id=?";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try{
+				conn = pool.getConnection();
+				pstmt = conn.prepareStatement(query);			
+				pstmt.setString(1,pw);
+				pstmt.setString(2,id);				
+				result = pstmt.executeUpdate();
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				pool.freeConnection(conn,pstmt);	
+			}
+			return result;
+		}
+		
+		/* 닉네임 변경 */
+		public int updateNick(String id,String nick){
+			System.out.println("id:"+id+",nick:"+nick);
+			int result = 0;
+			String query = "UPDATE usertb SET nickname=? WHERE id=?";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try{
+				conn = pool.getConnection();
+				pstmt = conn.prepareStatement(query);			
+				pstmt.setString(1,nick);
+				pstmt.setString(2,id);				
+				result = pstmt.executeUpdate();
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				pool.freeConnection(conn,pstmt);	
+			}
+			return result;
+		}
+		public int update(DTO dto){
+			int result = 0;
+			String query = "UPDATE usertb SET pw=?,nickName=? WHERE id=?";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try{
+				conn = pool.getConnection();
+				pstmt = conn.prepareStatement(query);			
+				pstmt.setString(1,(String)dto.getPw());
+				pstmt.setString(2,(String)dto.getNickName());
+				System.out.println((String)dto.getNickName());
+				pstmt.setString(3,(String)dto.getId());
+				result = pstmt.executeUpdate();
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				pool.freeConnection(conn,pstmt);	
+			}
+			return result;
+		}
+		
+		/*아이디로 이메일 찾기*/
+		public String idToEmail(String id){
+			String str="";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String query = "select email from usertb where id=?";
+			ResultSet rs = null;
+			try{
+				conn = pool.getConnection();
+				pstmt = conn.prepareStatement(query);			
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					str = rs.getString(1);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				pool.freeConnection(conn,pstmt);	
+			}
+			return str;
 		}
 }
