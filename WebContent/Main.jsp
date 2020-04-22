@@ -1204,6 +1204,7 @@
             $("#loginWrap").css("z-index", 100);
             $("sidebar").css("display", "none");
             $("#loginWrap").fadeIn(); 
+           /*  수정 */
 		}
         
         /* 마이페이지 버튼을 누르면 이동 */
