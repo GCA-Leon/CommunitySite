@@ -996,7 +996,7 @@
  <div id="loginWrap">
             <div id="loginBack">
             </div>
-            <form action="loginpage.do" id="login-form">
+            <form action="loginpage.do" id="login-form" method="post">
                 <h1>·Î±×ÀÎ</h1>
                 <div class="txtb">
                     <input type="text" id="logId" name="id">
@@ -1334,8 +1334,15 @@
            					 if(data.result){
            						$("#pw1").removeClass("fail");
            						$("#pw2").removeClass("fail");
-           						$("#pw1").addClass("success");
-           						$("#pw2").addClass("success");
+           						$("#pw1").removeClass("success");
+           						$("#pw2").removeClass("success");
+           						$("#pw1").removeClass("focus");
+           						$("#pw2").removeClass("focus");
+           						$("#pw1").val("");
+           						$("#pw2").val("");
+           						
+           						//$("#pw1").addClass("success");
+           						//$("#pw2").addClass("success");
            					}else{           						
            						$("#pw1").addClass("fail");
            						$("#pw2").addClass("fail");

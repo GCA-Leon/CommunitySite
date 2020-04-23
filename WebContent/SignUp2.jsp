@@ -1057,7 +1057,7 @@
  <div id="loginWrap">
             <div id="loginBack">
             </div>
-            <form action="loginpage.do" id="login-form">
+            <form action="loginpage.do" id="login-form" method="post">
                 <h1>·Î±×ÀÎ</h1>
                 <div class="txtb">
                     <input type="text" id="logId" name="id">
