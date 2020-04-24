@@ -20,6 +20,11 @@
             margin: 0px;
             box-sizing: border-box;
         }
+        
+        body {
+        	min-width: 600px;
+        }
+        
         #wrap{
             width: 100%;
             height: 1300px;
@@ -31,7 +36,7 @@
             height: 65px;            
         }
         #headCon{
-            width: 1200px;
+            width: 100%;
             display: flex;
             margin: 0 auto;
             justify-content: space-between;
@@ -44,7 +49,7 @@
         
             color: snow;
         }
-        #headC{
+        #headC {
             display: flex;
             list-style: none;
             color: gainsboro;
@@ -277,9 +282,10 @@
      #pagehrefs{
    	  		position:absolute;
         	display:flex;
-        	width:300px;
+        	width:200px;
         	margin-top:50px;
-        	margin-left:400px;
+        	/* margin-left:400px; */
+        	left: 50%;
         	border-radius:15px;
         	border-collapse: collapse;
         	background-color:rgb(230, 230, 230);
@@ -307,7 +313,7 @@
             color: gray;
             background-color: gainsboro;            
             margin: 0 auto;
-            width: 1080px;
+            width: 100%;
             padding-left: 20px;
         }
         #footme{margin-top: 30px;}
@@ -513,7 +519,7 @@
                 margin-left: 200px;
             }
             footer{
-                margin-left: 200px;
+		/*    margin-left: 200px; */
             }
             
         }
@@ -576,6 +582,14 @@
             #b7{
                 display: none;
             }
+            
+            #boardtable{
+	           width: 700px;
+       		 }
+       		 
+       		#boardsearchcontents{
+		        margin-left: 340px;
+	        }
         }
         @media(max-width:1020px){/*놀이터*/
             #b6{
@@ -592,6 +606,14 @@
             #b4{
                 display: none;
             }
+            
+             #boardtable{
+	           width: 500px;
+       		 }
+       		 
+       		#boardsearchcontents{
+		        margin-left: 140px;
+	        }
            
         }
         @media(max-width:740px){/*읽을거리판*/

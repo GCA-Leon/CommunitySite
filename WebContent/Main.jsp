@@ -32,7 +32,7 @@
             height: 65px;            
         }
         #headCon{
-            width: 1200px;
+            width: 100%;
             display: flex;
             margin: 0 auto;
             justify-content: space-between;
@@ -159,6 +159,11 @@
             padding-top: 3px;
             padding-bottom: 3px;
         }
+        
+        .main_boardname {
+        	width: 600px;
+        }
+        
         .main_boardname a:VISITED{
         	color:deepskyblue;
         }
@@ -214,7 +219,7 @@
             color: gray;
             background-color: gainsboro;            
             margin: 0 auto;
-            width: 1080px;
+            width: 600px;
             padding-left: 20px;
         }
         #footme{margin-top: 30px;}
@@ -425,9 +430,11 @@
             
         }
         @media(max-width:1280px){   
+        
              main{
              	margin: 0 auto;
              }
+
             #headR{
                 position: absolute;
                 right: 10px;
@@ -467,12 +474,14 @@
             
         }
         @media(max-width:1100px){/*±‚≈∏*/
+
             main{                
                 width: 100%;
                 margin-left: 0px; 
                 height: 1000px;
                 padding-left: 10%;
             }
+            
             /*#headC{
                 display: none;
             }*/
@@ -483,7 +492,11 @@
             #b7{
                 display: none;
             }
+        
+        	
         }
+        
+        
         @media(max-width:1020px){/*≥Ó¿Ã≈Õ*/
             #b6{
                 display: none;
