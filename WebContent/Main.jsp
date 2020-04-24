@@ -219,7 +219,7 @@
             color: gray;
             background-color: gainsboro;            
             margin: 0 auto;
-            width: 600px;
+            width: 600px; 
             padding-left: 20px;
         }
         #footme{margin-top: 30px;}
