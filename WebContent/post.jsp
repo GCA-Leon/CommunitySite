@@ -369,6 +369,7 @@
         display: flex;
          justify-content: space-between;
         }
+        
         #commentbtn{
         	width:100px;
         	height:40px;
@@ -842,18 +843,6 @@
                     </li>
                 </ul>        
                 <div id="headR">
-                    <div id="search">
-                        <i class="fas fa-search" id="searchi"></i>
-                        <div id="searchbox">
-                           <select name="sc">
-                            <option value="title">제목</option>
-                            <option value="contents">내용</option>
-                            <option value="writer">글쓴이</option>
-                            </select> 
-                            <input type="text" size="20" name="keyword" id="searchinput">
-                            <i class="fas fa-search" id="searchsubmit"></i>
-                            </div>
-                    </div>
                     <i class="fas fa-random" id="random"></i>
                     <%
 						try{
@@ -931,7 +920,13 @@
                             <div><%=dto2.get(0).getWriter()%></div>
                             <div><%=dto2.get(0).getWdate()%></div>
                         </div>
-                        <div>조회수 <%=dto2.get(0).getView()%></div>
+                        <div>조회수 <%=dto2.get(0).getView()%>
+                        <%
+                        String ni = dto2.get(0).getWriter();
+                        if(ni.equals(session.getAttribute("loginUserNickname"))){ %>
+                        <input type="button" value="삭제" id="delbtn" style="margin-left:10px;background-color:steelblue;border:0;color:white;height:22px;width:40px"><!-- 게시물 삭제 -->
+                        <%} %>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -1082,7 +1077,8 @@
                 				<textarea id="commentarea" name="commentContent"></textarea></div>
                 				<div id="btnpan">
                 					<div id="commentcols"><span style="color:#555;" id="counter">(0 / 최대 200자)</span>
-                				</div><input type="submit" value="작성" id="commentbtn"></div>
+                				</div>
+                				<div><input type="submit" value="작성" id="commentbtn"></div></div>
                 	
                 			</div>
                 			
@@ -1500,7 +1496,7 @@
             });
             
             /* 게시글 작성 버튼 */
-            $("#write").click(function() {
+            $("#write").click(function() { 
 				$(location).attr('href',"WriteBoard.jsp?boardname=<%=request.getParameter("boardname")%>");
             	
 			});
@@ -1675,6 +1671,12 @@
     			  });
 			});
             
+           	/* 게시글 삭제 */ 
+            $("#delbtn").click(function(){
+            	$(location).attr("href","DeleteAction.do?boardname=<%=request.getParameter("boardname")%>&idx=<%=request.getParameter("idx")%>");
+				
+			});
+           	
         });
     </script>
 </body>

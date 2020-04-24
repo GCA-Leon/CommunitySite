@@ -660,7 +660,7 @@
                 </div>
                 <ul id="headC">
                     <li id="i1">
-                        <div id="b1"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1">개드립</a></div>
+                        <div id="b1"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">개드립</a></div>
                         <div class="menubo">
                             <div id="menu1" class="menu">
                                <a href="#">개드립</a>
@@ -669,7 +669,7 @@
                         </div>
                     </li>
                     <li id="i2">
-                        <div id="b2"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1">유저 개드립</a> </div>
+                        <div id="b2"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">유저 개드립</a> </div>
                         <div class="menubo">
                             <div id="menu2" class="menu">
                                <a href="#">유저 개드립</a>
@@ -678,7 +678,7 @@
                         </div>
                     </li>
                     <li id="i3">
-                        <div id="b3"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">읽을 거리 판</a></div>
+                        <div id="b3"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">읽을 거리 판</a></div>
                         <div class="menubo">
                             <div id="menu3" class="menu">
                                 <a href="#">전체글 보기</a>
@@ -714,7 +714,7 @@
                         </div>
                     </li>
                     <li id="i5">
-                        <div id="b5"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1">게임 판</a></div>
+                        <div id="b5"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 판</a></div>
                         <div class="menubo">
                             <div id="menu5" class="menu">
                                 <a href="#">LOL</a>
@@ -749,18 +749,6 @@
                     </li>
                 </ul>        
                 <div id="headR">
-                    <div id="search">
-                        <i class="fas fa-search" id="searchi"></i>
-                        <div id="searchbox">
-                           <select name="sc">
-                            <option value="title">제목</option>
-                            <option value="contents">내용</option>
-                            <option value="writer">글쓴이</option>
-                            </select> 
-                            <input type="text" size="20" name="keyword" id="searchinput">
-                            <i class="fas fa-search" id="searchsubmit"></i>
-                            </div>
-                    </div>
                     <i class="fas fa-random" id="random"></i>
                     <%
 						try{
@@ -783,7 +771,21 @@
         <%
 			SearchDAO dao = new SearchDAO();
         	String boardname = request.getParameter("boardname");
-			int count = dao.listcall(boardname);
+        	String fff = request.getParameter("function");
+        	String sc = "";
+        	String keyword = "";
+        	int count = 0;
+        	if(fff.equals("yes")){
+        		System.out.println("앙");
+        		sc = request.getParameter("sc");
+        		keyword = request.getParameter("keyword");
+        		
+        		count=dao.listcall2(boardname, sc, keyword);
+        	}
+        	else{
+				
+			count = dao.listcall(boardname);
+			}
 			String pages = request.getParameter("page");
 			int start = 0;
 			count = (int)Math.ceil((double)count/20);
@@ -869,7 +871,7 @@
                 <%
     	for(int i=1;i<=count;i++){   //?sc=title&keyword=&pages=0
    			 %>
-    	<a href="BoardSearchAction.do?boardname=<%=request.getParameter("boardname")%>&sc=<%=request.getParameter("sc") %>&keyword=<%=request.getParameter("keyword") %>&pages=<%=i %>" class="pages">
+    	<a href="BoardSearchAction.do?boardname=<%=request.getParameter("boardname")%>&sc=<%=request.getParameter("sc") %>&keyword=<%=request.getParameter("keyword") %>&pages=<%=i %>&function=null" class="pages">
     		<%=i %>
     	</a> 
     <%} %>
@@ -1232,7 +1234,7 @@
             });
             
             $("#boardsearch").click(function(){
-                $(location).attr('href',"BoardSearchAction.do?boardname=<%=request.getParameter("boardname")%>&sc="+$("select").val()+"&keyword="+$("#boardkeyword").val());
+                $(location).attr('href',"BoardSearchAction.do?boardname=<%=request.getParameter("boardname")%>&sc="+$("select").val()+"&keyword="+$("#boardkeyword").val()+"&pages=1&function=yes");
             });
             
             /* 게시글 작성 버튼 */
