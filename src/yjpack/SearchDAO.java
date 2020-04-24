@@ -20,55 +20,7 @@ public class SearchDAO {
 	private PreparedStatement pstmt;
 	
 	// 아무 거나 검색 
-	public Vector search(String category,String keyword,int pages){
-		Vector<SearchDTO> v  = new Vector<SearchDTO>();
-		ResultSet rs = null;
-		
-		
-		String query = "select * from BOARDTB where "+category+" like ?";
-		String[] keywords = keyword.split(" ");
-		if(keyword.indexOf(" ")>0){
-			
-			for(int i =0;i<keywords.length-1;i++){
-				query += "%"+keywords[i]+"%";
-			}
-			
-		}
-		else{
-		}
-		query +=  "limit "+pages+",20";
-		//System.out.println(query);
-		try {
-			conn = pool.getConnection();
-			pstmt = conn.prepareStatement(query);
-			//for문 돌려서 ?갯수만큼 반복
-			//pstmt.setString(1, category);
-			pstmt.setString(1, "%"+keyword+"%");
-			//System.out.println(pstmt);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				SearchDTO dto= new SearchDTO();
-				dto.setIdx(rs.getInt(1));
-				dto.setTitle(rs.getString(2));
-				dto.setWriter(rs.getString(3));
-				dto.setWdate(rs.getDate(5));
-				dto.setView(rs.getInt(6));
-				dto.setUp(rs.getInt(7));
-				dto.setDown(rs.getInt(8));
-				dto.setComnum(rs.getInt(10));
-				v.add(dto);
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			pool.freeConnection(conn,pstmt,rs);
-		}
-		
-		return v;
-		
-	}
+	
 	
 	
 	public int listcall(String boardname){
@@ -93,20 +45,19 @@ public class SearchDAO {
 		return r;
 	}
 	
-	
 	public Vector mainlist(String boardname, int rows){
 		Vector<SearchDTO> v  = new Vector<SearchDTO>();
 		ResultSet rs = null;
 		
 		
-		String query = "select * from "+boardname+" order by idx desc limit 0,?";
+		String query = "select * from "+boardname+" order by idx desc limit 0,?";  
 
 		
 		//System.out.println(query);
 		try {
 			conn = pool.getConnection();
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, rows);
+			pstmt.setInt(1, rows); 
 			
 			//System.out.println(pstmt);
 			rs = pstmt.executeQuery();
@@ -343,6 +294,26 @@ public class SearchDAO {
 			pool.freeConnection(conn,pstmt,rs);
 		}
 		return r;
+	}
+	
+	public int Delete(String boardname,int idx){
+		int i = 0;
+		String query = "delete from "+boardname+" where idx=?";
+		
+		try {
+			conn = pool.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, idx);
+			i = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			pool.freeConnection(conn,pstmt);
+			
+		}
+		
+		return i;
 	}
 	
 }

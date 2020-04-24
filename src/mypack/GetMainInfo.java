@@ -20,8 +20,8 @@ public class GetMainInfo implements Action{
 		DAO dao = new DAO();
 		Vector<DTO> uv = dao.selectAll("usertb");		
 		request.setAttribute("users", uv);
-		Vector<ConDTO> cv = dao.conSelectAll("boardtb");
-		request.setAttribute("board", cv);
+		
+		/*자꾸 메시지 떠서*/
 		
 		forward.setRedirect(false);
 		forward.setNextPage("Main.jsp");

@@ -50,7 +50,7 @@ public class MainController extends HttpServlet {
 		String viewPage = null;		
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println(command);//*.do
+		System.out.println("커맨드:"+command);//*.do
 		try{
 			if(command.equals("Main.do")){
 				action = new GetMainInfo();
@@ -91,14 +91,6 @@ public class MainController extends HttpServlet {
 			}else if(command.equals("join.do")){//회원가입하기
 				action = new JoinProc();
 				forward = action.execute(request, response);
-			}else if(command.equals("Search.do")){
-				action = new Search();
-				forward = action.execute(request, response);
-			}
-			else if(command.equals("SearchAction.do")){
-				action = new SearchAction();
-				forward = action.execute(request, response);
-				
 			}else if(command.equals("BoardSearchAction.do")){ 
 				action = new BoardSearchAction();
 				forward = action.execute(request, response);
@@ -122,7 +114,12 @@ public class MainController extends HttpServlet {
 			else if(command.equals("UpdateCommentAction.do")){
 				action = new UpdateCommentAction();
 				forward = action.execute(request, response);
-			}else{				
+			}
+			else if(command.equals("DeleteAction.do")){ /*게시글 삭제*/
+				action = new DeleteAction();
+				forward = action.execute(request, response);
+			}
+			else{				
 				System.out.println("명령어 오류");
 				response.sendRedirect("Main.do");
 			}
