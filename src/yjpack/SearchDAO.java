@@ -44,7 +44,29 @@ public class SearchDAO {
 		}
 		return r;
 	}
-	
+	public int listcall2(String boardname,String sc,String keyword){
+		int r= 0;
+		ResultSet rs = null;
+		String query = "select Count(idx) from "+boardname+" where "+sc+" = ?";
+		
+		try {
+			conn = pool.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, keyword);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				r = rs.getInt(1);
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(conn,pstmt);
+		}
+		return r;
+	}
 	public Vector mainlist(String boardname, int rows){
 		Vector<SearchDTO> v  = new Vector<SearchDTO>();
 		ResultSet rs = null;

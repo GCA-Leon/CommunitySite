@@ -843,18 +843,6 @@
                     </li>
                 </ul>        
                 <div id="headR">
-                    <div id="search">
-                        <i class="fas fa-search" id="searchi"></i>
-                        <div id="searchbox">
-                           <select name="sc">
-                            <option value="title">제목</option>
-                            <option value="contents">내용</option>
-                            <option value="writer">글쓴이</option>
-                            </select> 
-                            <input type="text" size="20" name="keyword" id="searchinput">
-                            <i class="fas fa-search" id="searchsubmit"></i>
-                            </div>
-                    </div>
                     <i class="fas fa-random" id="random"></i>
                     <%
 						try{

@@ -571,7 +571,7 @@
                 </div>
                  <ul id="headC">
                     <li id="i1">
-                        <div id="b1"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1">개드립</a></div>
+                        <div id="b1"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null&function=null">개드립</a></div>
                         <div class="menubo">
                             <div id="menu1" class="menu">
                                <a href="#">개드립</a>
@@ -580,7 +580,7 @@
                         </div>
                     </li>
                      <li id="i2">
-                        <div id="b2"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1">유저 개드립</a> </div>
+                        <div id="b2"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null&function=null">유저 개드립</a> </div>
                         <div class="menubo">
                             <div id="menu2" class="menu">
                                <a href="#">유저 개드립</a>
@@ -589,7 +589,7 @@
                         </div>
                     </li>
                     <li id="i3">
-                        <div id="b3"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">읽을 거리 판</a></div>
+                        <div id="b3"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">읽을 거리 판</a></div>
                         <div class="menubo">
                             <div id="menu3" class="menu">
                                 <a href="#">전체글 보기</a>
@@ -606,7 +606,7 @@
                         </div>
                     </li>
                     <li id="i4">
-                        <div id="b4"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">커뮤니티</a></div>
+                        <div id="b4"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">커뮤니티</a></div>
                         <div class="menubo">
                             <div id="menu4" class="menu">
                                 <a href="#">탈것 판</a>
@@ -625,7 +625,7 @@
                         </div>
                     </li>
                     <li id="i5">
-                        <div id="b5"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">게임 판</a></div>
+                        <div id="b5"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">게임 판</a></div>
                         <div class="menubo">
                             <div id="menu5" class="menu">
                                 <a href="#">LOL</a>
@@ -639,7 +639,7 @@
                         </div>
                     </li>
                     <li id="i6">
-                        <div id="b6"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">놀이터</a></div>
+                        <div id="b6"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">놀이터</a></div>
                         <div class="menubo">
                             <div id="menu6" class="menu">
                                 <a href="#">개드립콘</a>
@@ -650,7 +650,7 @@
                         </div>
                     </li>
                     <li id="i7">
-                        <div id="b7"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">기타</a></div>
+                        <div id="b7"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">기타</a></div>
                         <div class="menubo">
                             <div id="menu7" class="menu">
                                 <a href="#">공지사항</a>
@@ -689,7 +689,7 @@
                <div class="board">
                    <table>
                       <tr>
-                         <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1">개드립</a></th>
+                         <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">개드립</a></th>
                       </tr>
                       <%
     				SearchDAO dao1 = new SearchDAO();
@@ -709,7 +709,7 @@
                    <div class="board">
                        <table>
                           <tr>
-                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1">유저 개드립</a></th>
+                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">유저 개드립</a></th>
                           </tr>
                          <%
     				SearchDAO dao2 = new SearchDAO();
@@ -728,7 +728,7 @@
                    <div class="board">
                        <table>
                           <tr>
-                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">읽을 거리 판</a></th>
+                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">읽을 거리 판</a></th>
                           </tr>
                           <%
     				SearchDAO dao3 = new SearchDAO();
@@ -750,7 +750,7 @@
                 <div class="board">
                     <table>
                           <tr>
-                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">게임 연재 / 정보 판</a></th>
+                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">게임 연재 / 정보 판</a></th>
                           </tr>
                          <%
     				SearchDAO dao4 = new SearchDAO();
@@ -769,7 +769,7 @@
                 <div class="board">
                     <table>
                           <tr>
-                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1">탈것 판</a></th>
+                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">탈것 판</a></th>
                           </tr>
 				<%
     				SearchDAO dao5= new SearchDAO();
