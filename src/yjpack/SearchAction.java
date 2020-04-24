@@ -18,11 +18,15 @@ public class SearchAction implements Action{
 		
 		String category = request.getParameter("sc");
 		String keyword = request.getParameter("keyword");
+		String boardname = request.getParameter("boardname");
 		int pages = Integer.parseInt(request.getParameter("pages"));
 		pages = (pages-1)*20;
 		Vector<SearchDTO> v = dao.search(category, keyword,pages);
+		for(int i=0;i<v.size();i++){
+			System.out.println(v.get(i));
+		}
 		request.setAttribute("list", v);
-		
+		request.setAttribute("boardname", boardname);
 		forward.setRedirect(false);
 		forward.setNextPage("Search.jsp");		
 		
