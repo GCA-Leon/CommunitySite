@@ -590,10 +590,18 @@
             text-align: center;
             font-size: 13px;
         }
+        a{
+            color: gainsboro;
+        }
         a:visited{
             color: gainsboro;
         }
-        
+        .bottom-text a{
+        	color: black;
+        }
+        .bottom-text2 a{
+        	color: black;
+        }
         
         /*반응형*/
         @media(max-width:1500px){
