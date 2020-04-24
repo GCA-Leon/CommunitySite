@@ -32,13 +32,11 @@ public class MainController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("두갯");
 		doProcess(request, response);	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("두포스트");
 		doProcess(request, response);
 	}
 	
@@ -90,9 +88,6 @@ public class MainController extends HttpServlet {
 			}else if(command.equals("goLogout.do")){//로그인페이지
 				action = new Logout();
 				forward = action.execute(request, response);
-			}else if(command.equals("signUP2.do")){//회원가입에 필요한 인증들
-				action = new SignupProc();
-				forward = action.execute(request, response);
 			}else if(command.equals("join.do")){//회원가입하기
 				action = new JoinProc();
 				forward = action.execute(request, response);
@@ -119,6 +114,13 @@ public class MainController extends HttpServlet {
 			}
 			else if(command.equals("Press.do")){//게시판 글 중에 업 다운 버튼
 				action = new Press();
+				forward = action.execute(request, response);
+			}else if(command.equals("WriteCommentAction.do")){
+				action = new WriteCommentAction();
+				forward = action.execute(request, response);
+			}
+			else if(command.equals("UpdateCommentAction.do")){
+				action = new UpdateCommentAction();
 				forward = action.execute(request, response);
 			}else{				
 				System.out.println("명령어 오류");

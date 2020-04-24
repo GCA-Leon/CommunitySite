@@ -157,7 +157,7 @@ public class DAO {
 	public int getConfire(String id){
 		int result =0;
 		String query = "select count(*) from usertb where id=?";
-		System.out.println("select count(*) from usertb where id="+id);
+		//System.out.println("select count(*) from usertb where id="+id);
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -367,6 +367,7 @@ public class DAO {
 				if(rs.next()){
 					result = rs.getInt(1);
 				}
+				System.out.println("result : "+result);
 			}catch(Exception e){
 				e.printStackTrace();
 			}finally{
