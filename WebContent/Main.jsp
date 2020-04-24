@@ -1,4 +1,4 @@
-<!-- ÃÖ±¤¸² --> <!-- sddsd -->
+<!-- ÃÖ±¤¸² --> <!-- test22 -->
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="EUC-KR"%>
 <%@ page import="mypack.*, java.util.*, yjpack.*" %>
