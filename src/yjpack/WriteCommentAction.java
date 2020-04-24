@@ -1,39 +1,40 @@
 package yjpack;
 
 import java.io.*;
-import java.util.Vector;
+import java.text.*;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import mypack.*;
-public class PostAction implements Action{
+public class WriteCommentAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		ActionForward forward = new ActionForward();
 		
-		SearchDAO dao = new SearchDAO();
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("¤»¤»¤»");
 		String boardname = request.getParameter("boardname");
+		String nickname = request.getParameter("nickname");
+		String Content = request.getParameter("commentContent");
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		
-		Vector<SearchDTO> v = dao.CallPost(boardname, idx);
-		Vector<SearchDTO> v2 = dao.boardlist(boardname,"null","null",1);
-		request.setAttribute("posts", v);
-		request.setAttribute("list", v2);
-		request.setAttribute("boardname", boardname);
-		request.setAttribute("idx",idx);
-		forward.setRedirect(false);
-		forward.setNextPage("post.jsp");
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy.MM.dd~HH:mm:ss");
+		Date now = new Date();
+		String time = format.format(now);
 		
-
+		String instr="$"+nickname+"$"+Content+"$"+0+"$"+0+"$"+time+"$null"+"|";
+		
 		File CommentFile = new File("C:/Users/user/Desktop/CommentList/"+boardname+"/"+idx+".txt");
 		
 		FileWriter fw = null;
-		if(!CommentFile.exists()){
+		
 		try{
-			fw = new FileWriter(CommentFile);
-			fw.write("");
+			fw = new FileWriter(CommentFile,true);
+			fw.write(instr);
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -41,10 +42,9 @@ public class PostAction implements Action{
 			fw.close();
 		}
 		
-		}
-		
+		forward.setRedirect(true);
+		forward.setNextPage("Post.do?boardname="+boardname+"&idx="+idx);
 		
 		return forward;
 	}
-
 }

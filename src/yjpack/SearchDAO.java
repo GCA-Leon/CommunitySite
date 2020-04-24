@@ -69,10 +69,12 @@ public class SearchDAO {
 		return v;
 		
 	}
-	public int listcall(){
+	
+	
+	public int listcall(String boardname){
 		int r= 0;
 		ResultSet rs = null;
-		String query = "select Count(idx) from boardtb";
+		String query = "select Count(idx) from "+boardname;
 		
 		try {
 			conn = pool.getConnection();
@@ -88,12 +90,10 @@ public class SearchDAO {
 		}finally {
 			pool.freeConnection(conn,pstmt);
 		}
-		
-		
-		
-		
 		return r;
 	}
+	
+	
 	public Vector mainlist(String boardname, int rows){
 		Vector<SearchDTO> v  = new Vector<SearchDTO>();
 		ResultSet rs = null;
@@ -197,7 +197,7 @@ public class SearchDAO {
 	
 	public int Write(String boardname,String title,String writer, String contents,String comments){
 		int i = 0;
-		String query = "insert into "+boardname+" values(null,?,?,?,now(),0,0,0,?,0)";
+		String query = "insert into "+boardname+" values(null,?,?,?,now(),0,0,0,?,0,null)";
 		
 		try {
 			conn = pool.getConnection();
