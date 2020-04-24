@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%@ page import="java.util.*, mypack.*, yjpack.*" %>
+        <%@page import="java.io.*,java.text.*"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -344,7 +345,64 @@
         #post_favorite input:hover{
             background-color: dodgerblue;
         }
+        /* 수정 */
+        #write_comment{
+         width:100%
+        }
+        #write_comment_top{
+         background-color: gainsboro;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between
+        }
+        #write_comment_bottom{
         
+        width:100%
+        }
+        #commentarea{
+        width:100%;
+        height: 100px;
+        font-size: 15px;
+        resize: none;
+        }
+        #btnpan{
+        display: flex;
+         justify-content: space-between;
+        }
+        #commentbtn{
+        	width:100px;
+        	height:40px;
+        	font-size: 30px;
+        }
+        
+        
+     #pagehrefs{
+   	  		position:absolute;
+        	display:flex;
+        	width:300px;
+        	margin-top:50px;
+        	margin-left:400px;
+        	border-radius:15px;
+        	border-collapse: collapse;
+        	background-color:rgb(230, 230, 230);
+        	
+        } 
+        .pages{
+        	padding-top:5px;
+        	width:30px;
+        	height:30px;
+        	border-radius:15px;
+        	text-align:center;
+        	color:black; /* 수정 */
+        } 
+        .pages:visited{
+        	color: black;
+        }
+        
+        .pages:HOVER{
+        	background-color:rgb(179, 198, 255);
+        	color: deepskyblue;
+        }
         
         
      #pagehrefs{
@@ -808,9 +866,9 @@
         
     <main> 
     <%
-	SearchDAO dao = new SearchDAO();
-	
-	int count = dao.listcall();
+    SearchDAO dao = new SearchDAO();
+	String boardname = request.getParameter("boardname");
+	int count = dao.listcall(boardname);
 	String pages = request.getParameter("page");
 	int start = 0;
 	count = (int)Math.ceil((double)count/20);
@@ -854,7 +912,7 @@
     Vector<SearchDTO> dto2 = (Vector<SearchDTO>)request.getAttribute("posts");
     
     %>
-    <form id="upNdown">
+    
             <table id="post">
                 <tr>
                     <td id="post_title"><%=dto2.get(0).getTitle()%></td>
@@ -883,30 +941,151 @@
                 
                 </tr>
                 
-                <tr>
-                    <td style="padding: 100px;">뭐넣지 여기에</td>
+                 <tr>
+                    <td style="padding: 100px;"></td>
                 </tr>
-                <tr>
-                    <td><div class="post_comments">
-                            <div class="post_comments_top">
-                                <div>댓글 쓰니</div>
-                                <div>댓글 작성일</div>
-                            </div>
-                            <div class="post_comments_bottom">댓글 내용</div>
-                        </div></td>
+                 <% 
+                String path = "C:/Users/user/Desktop/CommentList/"+request.getParameter("boardname")+"/"+request.getParameter("idx")+".txt";
+                
+        		File CommentFile = new File(path);
+        		FileReader fr = null;
+        		String outstr = "";
+        		try{
+        			fr = new FileReader(CommentFile);
+        			BufferedReader br = new BufferedReader(fr);
+        			outstr = br.readLine();
+        		
+	        		System.out.println("outstr댓글관련:"+outstr);
+	        		String[] comments = outstr.split("\\|");
+	        		System.out.println("cl댓글관련:"+comments.length);
+	        		if(comments.length>0){
+	        			int i = 0;
+		                while(true){
+							
+		                    String[] comel = comments[i].split("\\$");
+		
+		            		System.out.println("댓글관련:"+comel[4]);
+		                   	String nick = comel[1];
+		                   	String con = comel[2];
+		                   	String comup = comel[3];
+		                   	String comdown = comel[4];
+		                   	String comtime = comel[5];
+	
+		            		String resulttime = "";
+		                   	
+		                   	SimpleDateFormat format = new SimpleDateFormat ( "yyyy.MM.dd~HH:mm:ss");
+		            		Date now = new Date();
+		            		String time = format.format(now);
+		
+		            		System.out.println(time);
+		            		System.out.println(comtime);
+		            		String nt1[] = time.split("\\~");
+		            		String nt2[] = comtime.split("\\~");
+		            		if(nt1[0].equals(nt2[0])){
+		            			String nth1[] = nt1[1].split("\\:");
+		            			String nth2[] = nt2[1].split("\\:");
+		            			int rth = Integer.parseInt(nth1[0])-Integer.parseInt(nth2[0]);
+		            			if(rth==0){
+		            				String ntm1[] = time.split("\\:");
+		                			String ntm2[] = comtime.split("\\:");
+		
+		                    		System.out.println(ntm1[1]);
+		                    		System.out.println(ntm2[1]);
+		                			int rtm = Integer.parseInt(ntm1[1])-Integer.parseInt(ntm2[1]);
+		                			resulttime=rtm+"분 전";
+		            			}else{
+	            				resulttime=rth+"시간 전";
+	            				}            			
+	            			}else{
+		            			String ntm1[] = nt1[0].split("\\.");
+		            			String ntm2[] = nt2[0].split("\\.");
+	            				if(ntm1[1].equals(ntm2[1]) && ntm1[0].equals(ntm2[0])){
+		                			String ntt1[] = nt1[0].split("\\.");
+		                			String ntt2[] = nt2[0].split("\\.");
+		                			int rt = Integer.parseInt(ntt1[2])-Integer.parseInt(ntt2[2]);
+		                			resulttime = rt+"일 전";
+		            			}else{
+	            					resulttime = nt2[0];
+	            				}            			
+	            			}%>
+	                
+	                <tr>
+	                	<form action="UpdateCommentAction.do" id="commet<%=i%>">
+	                    <td><div class="post_comments">
+	                            <div class="post_comments_top">
+	                                <div><%=nick %> <%=resulttime %></div>
+	                                <% System.out.println("nick: "+nick);
+	                                System.out.println("loginusernick : "+session.getAttribute("loginUserNickname"));
+	                                %>
+	                                <div class="post_comments_updown">
+	                                	<%if(nick.equals(session.getAttribute("loginUserNickname"))){ %>
+	                                	<input type="button" value="수정" class="comupdate"  name="suddenarea<%=i%>" style="background-color:steelblue;border:0;color:white;height:22px;width:30px">
+	                                	<input type="submit" value="삭제" class="comdelete" name="command" style="background-color:steelblue;border:0;color:white;height:22px;width:30px">
+	                                	<input type="hidden" name="comidx" value="<%=i%>"><input type="hidden" name="path" value="<%=path%>">
+	                                	<input type="hidden" name="boardname" value="<%=request.getParameter("boardname")%>"><input type="hidden" name="idx" value="<%=request.getParameter("idx")%>">
+	                                	<div style="display: inline-block"><div style="display: inline-block;background-color:steelblue;border:0;color:white;height:22px;width:50px;text-align:center;font-size: 15px;">추천:<%=comup %></div ><div style="margin-left:5px;display:inline-block;background-color:steelblue;border:0;color:white;height:22px;width:50px;font-size: 15px;text-align:center">반대:<%=comdown %></div></div>
+	                                	<%}else{ %>
+	                                	<input type="button" value="추천:<%=comup %>" class="comup" id="a<%=i%>" name="<%=i%>" style="background-color:steelblue;border:0;color:white;height:22px;width:50px;font-size: 15px;">
+	                                	<input type="button" value="반대:<%=comdown %>" class="comdown"  name="<%=i%>" id="b<%=i%>" style="background-color:steelblue;border:0;color:white;height:22px;width:50px;font-size: 15px;">
+	                                	<%} %>
+	                                </div>
+	                            </div>
+	                            <div class="post_comments_bottom"><%=con%></div>
+	                            <textarea name="updatecomment" id="suddenarea<%=i%>" style="width:100%; height: 100px; font-size: 15px;resize: none;display: none;"></textarea>
+	                        </div></td>
+	                        </form>
+	                </tr>
+	                <%
+	
+		               	i++;
+		                if(i==comments.length){
+		                	break;
+		                }
+             	   }
+                }
+        		}catch(Exception e){
+        			//e.printStackTrace();
+        			System.out.println("error");
+        		}finally{
+        			fr.close();
+        		}
+                %>
+                <%if(session.getAttribute("loginUserNickname")!=null){%>
+                <form action = "WriteCommentAction.do">
+                <tr> <!-- 수정 -->
+                	
+                	<td>
+                		
+                		<div id="write_comment">
+                		 
+                				<div id="write_comment_top">
+                					<div><%=session.getAttribute("loginUserNickname")%></div> 
+                					<input type="hidden" name="boardname"  value="<%=request.getParameter("boardname") %>">
+                					<input type="hidden" name="nickname" value="<%=session.getAttribute("loginUserNickname")%>">
+                					<input type="hidden" name="idx" value="<%=request.getParameter("idx")%>">
+                					 <% 
+                					 	System.out.println("write부분");
+	                                	System.out.println("boardname : "+request.getAttribute("boardname"));
+	                                	System.out.println("nickname : "+session.getAttribute("loginUserNickname"));
+	                                	System.out.println("idx : "+request.getAttribute("idx"));
+	                                %>
+                				</div>
+                				<div id="write_comment_bottom">
+                				<textarea id="commentarea" name="commentContent"></textarea></div>
+                				<div id="btnpan">
+                					<div id="commentcols"><span style="color:#555;" id="counter">(0 / 최대 200자)</span>
+                				</div><input type="submit" value="작성" id="commentbtn"></div>
+                	
+                			</div>
+                			
+                	</td>
+                	
                 </tr>
-                <tr>
-                    <td><div class="post_comments">
-                            <div class="post_comments_top">
-                                <div>댓글 쓰니</div>
-                                <div>댓글 작성일</div>
-                            </div>
-                            <div class="post_comments_bottom">댓글 내용</div>
-                        </div></td>
-                </tr>
+                </form>
+                <%} %>
             </table>
             
-         </form>   
+          
             
              <div id="boardsearchcontents">
             <i class="fas fa-search" id="boardsearch"></i>
@@ -964,7 +1143,7 @@
                </tr>
             </table>
             
-      <input type="hidden" value="<%= request.getParameter("boardname")%>" id="hbn" name="hiddenBoardName">
+       <input type="hidden" value="<%= request.getParameter("boardname")%>" id="hbn" name="hiddenBoardName">
       <input type="hidden" value="<%= request.getParameter("idx")%>" id="hidx" name="idx">
       <input type="hidden" value="<%= session.getAttribute("loginUserNickname")%>" id="hnn" name="hiddenNickName">
       <input type="hidden" value="<%= session.getAttribute("loginck")%>" id="hlc">
@@ -1402,6 +1581,92 @@
 	        		});
             	}
             });        
+            
+            /* 텍스트 글자수 카운팅 */
+            $("#commentarea").keyup(function() {
+            	var content = $(this).val();
+                $('#counter').html("("+content.length+" / 최대 200자)");
+			});
+            
+            /* 댓글수정 삭제 */
+         	$(".comupdate").click(function(){
+
+         		var tid = $(this).attr("name");
+         		if($("#"+tid).css("display") == "block" ){
+         			$(this).attr("name","command")
+             		$(this).prop("type","submit");
+         			
+         		}else{
+         		$("#"+tid).css({
+         			display:'block'
+         		});
+         		
+         		}
+         		
+			});
+            $(".comup").click(function() {
+            		var c = $(this).attr("name");
+        			$.ajax({
+        			    url: "UpdateComment.jsp", //요청 url 주소
+        			    type: "post", // 데이터 전송 방식 get , post			   
+        			    dataType: "json", // 데이터 타입 xml, json, html, ...
+        			   // data: $('form').serialize(), //			넘길값 이름 : 넘길 값
+        			   data: {
+        				  			 path: "<%=path%>",
+        				   			idx : $(this).attr("name"),
+        				   			nick:"<%=session.getAttribute("loginUserNickname")%>",
+        				   			command:"up"
+        			   },
+        			    success: function(data){ // 통신이 성공적으로 성공했을 때
+        			    	if(data.result != "0"){
+        			    	$("#a"+c).val("추천:"+data.result);
+        			    	}
+        			    	else{
+        			    		alert("이미 추천 / 반대를 한 댓글입니다.")
+        			    	}
+        			    	
+        			    },
+        			    complete : function(data) {	 // 통신의 성공여부를 떠나서 끝났을 때  
+
+        			    },
+        			    error: function (request, status, error){ // 에러 발생시			    	 
+        				        alert("통신실패");
+        			    }
+        			  });
+				
+			});
+            $(".comdown").click(function() {
+
+        		var d = $(this).attr("name");
+            
+    			$.ajax({
+    			    url: "UpdateComment.jsp", //요청 url 주소
+    			    type: "post", // 데이터 전송 방식 get , post			   
+    			    dataType: "json", // 데이터 타입 xml, json, html, ...
+    			   // data: $('form').serialize(), //			넘길값 이름 : 넘길 값
+    			   data: {
+    				  			 path:"<%=path%>",
+    				   			idx : $(this).attr("name"),
+    				   			nick:"<%=session.getAttribute("loginUserNickname")%>",
+    				   			command:"down"
+    			   },
+    			    success: function(data){ // 통신이 성공적으로 성공했을 때			   
+    			    	
+    			    	if(data.result != "0"){
+    			    	$("#b"+d).val("반대:"+data.result);
+    			    	}
+    			    	else{
+    			    		alert("이미 추천 / 반대를 한 댓글입니다.")
+    			    	}
+    			    },
+    			    complete : function(data) {	 // 통신의 성공여부를 떠나서 끝났을 때   	
+    			    },
+    			    error: function (request, status, error){ // 에러 발생시			    	 
+    				        alert("통신실패");
+    			    }
+    			  });
+			});
+            
         });
     </script>
 </body>

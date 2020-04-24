@@ -213,7 +213,6 @@
             border-bottom-right-radius: 5px;
             box-shadow: 0px 10px 10px 5px gainsboro;            
             opacity: 0%;
-            
         }
         .menu a{
             margin: 5px;
@@ -928,7 +927,7 @@
                 
             });
             
-             $("#headC li div").mouseenter(function(){                
+             $("#headC li >div").mouseenter(function(){
                if($(this).is("#b1")){
                    
                    $("#menu1").css("opacity","100%");
@@ -983,6 +982,7 @@
                    $("#menu7").animate({width : "200px",height:"100px"});
                     
                }
+               
                 
             });
           
@@ -1045,7 +1045,6 @@
                         });
                    $("#menu7").css("width","200px");
                }
-                
             });
             
             /*로그인버튼*/
@@ -1186,6 +1185,7 @@
         function mypagefun(){
 			location.href="MyPage.do";
         }
+        
         /* 2020.04.21 지원홍 */
     </script>
 </body>

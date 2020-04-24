@@ -57,9 +57,11 @@
             padding-top: 5px; 
             z-index: 10;
         }
+        /* 메뉴문제 */
         .menu a{
         	color:black;
-            margin: 5px;            
+            margin: 5px;   
+            display:none;         
         }
         .menu a:link{
             color: black;
@@ -102,39 +104,6 @@
             margin-top: -5px;
             cursor: pointer;
         }
-        
-         #searchi{
-            padding-top: 5px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        #searchbox{
-            box-shadow: 0px 10px 10px 5px gainsboro;
-            border-radius: 10px;
-            width: 400px;
-            height: 50px;
-            position: absolute;
-            margin-top: 22px;
-            margin-left: -300px;
-            padding: 10px;
-            padding-left: 15px;
-            background-color: white;
-            display: none;
-            z-index: 20;
-            
-        }
-        select{
-            font-size: 21px;
-            vertical-align: bottom
-        }
-        #searchinput{
-            font-size: 20px;
-        }
-        #searchsubmit{
-            color: black;
-            cursor: pointer;
-        }
-        
         #random{
             padding-top: 5px;
             margin-right: 20px;
@@ -691,18 +660,7 @@
                     </li>
                 </ul>        
                 <div id="headR">
-                    <div id="search">
-                        <i class="fas fa-search" id="searchi"></i>
-                        <div id="searchbox">
-                           <select name="sc">
-                            <option value="title">제목</option>
-                            <option value="contents">내용</option>
-                            <option value="writer">글쓴이</option>
-                            </select> 
-                            <input type="text" size="20" name="keyword" id="searchinput">
-                            <i class="fas fa-search" id="searchsubmit"></i>
-                            </div>
-                    </div>
+                   
                     <i class="fas fa-random" id="random"></i>
   <!-- 로그인버튼 -->
                     <%
@@ -999,7 +957,7 @@
             });
             
             
-            
+            /* 메뉴문제 */
              $("#headC li div").mouseenter(function(){                
                if($(this).is("#b1")){
                    
@@ -1007,7 +965,7 @@
                    $("#menu1").css("width","0px");
                    $("#menu1").css("height","0px");
                    $("#menu1").animate({width : "200px",height:"100px"});
-                  
+                  $("#menu1 a").css("display", "block");
                }
                 else if($(this).is("#b2")){
                     
@@ -1015,6 +973,7 @@
                    $("#menu2").css("width","0px");
                     $("#menu2").css("height","0px");
                    $("#menu2").animate({width : "200px",height:"100px"});
+                   $("#menu2 a").css("display", "block");
                }
                 else if($(this).is("#b3")){
                     
@@ -1022,7 +981,7 @@
                    $("#menu3").css("width","0px");
                     $("#menu3").css("height","0px");
                    $("#menu3").animate({width : "200px",height:"350px"});
-                    
+                   $("#menu3 a").css("display", "block");
                }
                 else if($(this).is("#b4")){
                     
@@ -1030,7 +989,7 @@
                    $("#menu4").css("width","0px");
                     $("#menu4").css("height","0px");
                    $("#menu4").animate({width : "200px",height:"410px"});
-                    
+                   $("#menu4 a").css("display", "block");
                }
                 else if($(this).is("#b5")){
                     
@@ -1039,21 +998,21 @@
                     $("#menu5").css("height","0px");
                    $("#menu5").animate({width : 
                     "200px",height:"250px"});
-                    
+                   $("#menu5 a").css("display", "block");
                }
                 else if($(this).is("#b6")){
                    $("#menu6").css("opacity","100%");
                    $("#menu6").css("width","0px");
                     $("#menu6").css("height","0px");
                    $("#menu6").animate({width : "200px",height:"160px"});
-                    
+                   $("#menu6 a").css("display", "block");
                }
                 else if($(this).is("#b7")){
                    $("#menu7").css("opacity","100%");
                    $("#menu7").css("width","0px");
                     $("#menu7").css("height","0px");
                    $("#menu7").animate({width : "200px",height:"100px"});
-                    
+                   $("#menu7 a").css("display", "block");
                }
                 
             });
@@ -1070,7 +1029,9 @@
                     },500,function(){
                         
                    $("#menu1").css("width","200px");
+                   $("#menu1 a").css("display", "none"); 	
                     });
+                    
                }
                 else if($(this).is("#i2")){
                     $("#menu2").animate({
@@ -1079,6 +1040,7 @@
                         height:"0px"
                         });
                    $("#menu2").css("width","200px");
+                   $("#menu2 a").css("display", "none");
                }
                 else if($(this).is("#i3")){
                     $("#menu3").animate({
@@ -1087,6 +1049,7 @@
                         height:"0px"
                         });
                    $("#menu3").css("width","200px");
+                   $("#menu3 a").css("display", "none");
                }
                 else if($(this).is("#i4")){
                     $("#menu4").animate({
@@ -1095,6 +1058,7 @@
                         height:"0px"
                         });
                    $("#menu4").css("width","200px");
+                   $("#menu4 a").css("display", "none");
                }
                 else if($(this).is("#i5")){
                     $("#menu5").animate({
@@ -1103,6 +1067,7 @@
                         height:"0px"
                         });
                    $("#menu5").css("width","200px");
+                   $("#menu5 a").css("display", "none");
                }
                 else if($(this).is("#i6")){
                     $("#menu6").animate({
@@ -1111,6 +1076,7 @@
                         height:"0px"
                         });
                    $("#menu6").css("width","200px");
+                   $("#menu6 a").css("display", "none");
                }
                 else if($(this).is("#i7")){
                     $("#menu7").animate({
@@ -1119,6 +1085,7 @@
                         height:"0px"
                         });
                    $("#menu7").css("width","200px");
+                   $("#menu7 a").css("display", "none");
                }
                 
             });
@@ -1164,21 +1131,7 @@
                 
             });
             
-            /*서치박스*/
-            $("#searchi").click(function(){
-                $("#searchbox").css({'display': 'block', 'opacity': 0}).animate({'opacity': 1}, 300);
-            });
-            
-            $('html').click(function(e){
-                if($(e.target).is("#searchi")){}
-                else if($(e.target).is("#searchbox")){}
-                else if($(e.target).is("#searchinput")){}
-                else if($(e.target).is("select")){}
-                else if($(e.target).is("#searchsubmit")){
-                    $(location).attr('href',"SearchAction.do?sc="+$("select").val()+"&keyword="+$("#searchinput").val());
-                }
-                else{$("#searchbox").animate({'display': 'block','opacity': 0}, 300);}
-            });
+           
             
             /* 로그인버튼 */    
         	$("#goLogin").click(function(){

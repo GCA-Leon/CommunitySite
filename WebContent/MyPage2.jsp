@@ -1340,9 +1340,6 @@
            						$("#pw2").removeClass("focus");
            						$("#pw1").val("");
            						$("#pw2").val("");
-           						
-           						//$("#pw1").addClass("success");
-           						//$("#pw2").addClass("success");
            					}else{           						
            						$("#pw1").addClass("fail");
            						$("#pw2").addClass("fail");

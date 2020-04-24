@@ -638,8 +638,6 @@
                 padding-top: 5px;
             }
         }
-        /* 2020.04.21 지원홍 */
-        /* 웹페이지의 사이즈를 줄이면 글씨의 밀려서 반응형 설정 */
         @media(max-width:700px){
 
             #sidemypage > div:nth-child(2) {
@@ -652,7 +650,6 @@
                 display: none;
             }       
         }
-        /* 2020.04.21 지원홍 */
     </style>
 </head>
 <body>
@@ -675,81 +672,7 @@
 			isLogin = false;
 		}
 	%>
-	<%
-		boolean idC = false;
-		boolean pw1C = false;
-		boolean pw2C = false;
-		boolean nickC = false;		
-		boolean emailC = false;
-		boolean codeC = true;
-		try{
-			idC = (boolean)request.getAttribute("isIdCon");
-			if(idC==false){
-				String userId = (String)request.getAttribute("userId");
-				session.setAttribute("userId", userId);
-			}else{
-				session.setAttribute("userId", "duplication");
-			}
-		}catch(NullPointerException e){
-			idC = true;
-		}
-		
-		try{
-			pw1C = (boolean)request.getAttribute("isPw1");
-			if(pw1C==true){//1번째 비밀번호 값이 존재할때
-				String pw1= (String)request.getAttribute("pw1");
-				session.setAttribute("pw1", pw1);
-				String pw2= (String)request.getAttribute("pw2");
-				session.setAttribute("pw2", pw2);
-			}
-			else{
-				session.setAttribute("pw1", "nothing");
-			}
-		}catch(NullPointerException e){
-			pw1C = false;
-		}
-		
-		
-		try{
-			nickC = (boolean)request.getAttribute("isNickCon");
-			if(nickC==false){//닉네임이 중복 되지 않으면
-				String userNick = (String)request.getAttribute("userNick");
-				session.setAttribute("userNick", userNick);
-			}else{
-				session.setAttribute("userNick", "duplication");
-			}
-		}catch(NullPointerException e){
-			nickC = true;
-		}
-		
-		try{
-			emailC = (boolean)request.getAttribute("isEmailCon");
-			if(emailC==false){//이메일이 중복 되지 않으면
-				String userEmail = (String)request.getAttribute("userEmail");
-				session.setAttribute("userEmail3", userEmail);
-				String orgCode = (String)request.getAttribute("attk");
-				session.setAttribute("orgcode1", orgCode);
-				System.out.println("orgCode:"+ orgCode);
-			}else{
-				session.setAttribute("userEmail3", "duplication");
-			}
-		}catch(NullPointerException e){
-			emailC = true;
-		}
-		
-		try{
-			codeC = (boolean)request.getAttribute("isCodeCon");
-			if(codeC== false){//인증번호 인증이 되면 false
-				String userCode = (String)request.getAttribute("userCode");				
-				System.out.println("userCode : "+userCode);
-				session.setAttribute("userCode", userCode);
-			}else{
-				session.setAttribute("userCode", "fail");
-			}
-		}catch(NullPointerException e){
-			codeC = true;
-		}
-	%>
+	
     <div id="wrap">
         <header>
            <div id="headCon">
@@ -885,37 +808,37 @@
            <form id="signup-form" action="join.do" method="post">
             <h1>회원가입</h1>            
                 <div class="txts">
-                    <input type="text" id="idtf" name="id"  value="<%= session.getAttribute("userId") %>" >
+                    <input type="text" id="idtf" name="id"  value="" >
                     <span data-placeholder="아이디"></span>                    
                     <input type="button" value="중복확인" id="confire" class="idC">
-                    <% System.out.println("userId="+session.getAttribute("userId"));%>
+                    <%-- <% System.out.println("userId="+session.getAttribute("userId"));%> --%>
                 </div>
             <div class="txts">
-                <input type="password" id="pw1" name="pw" value="<%= session.getAttribute("pw1") %>">
+                <input type="password" id="pw1" name="pw" value="">
                 <span data-placeholder="비밀 번호"></span>          
-                <%System.out.println("pw1 : "+session.getAttribute("pw1")); %>      
+               <%--  <%System.out.println("pw1 : "+session.getAttribute("pw1")); %>   --%>    
             </div>
             
             <div class="txts">
-                <input type="password" id="pw2" name="pwck" value="<%= session.getAttribute("pw2") %>">
+                <input type="password" id="pw2" name="pwck" value="">
                 <span data-placeholder="비밀 번호 확인"></span>
-                <%System.out.println("pw2 : "+session.getAttribute("pw2")); %>
+               <%--  <%System.out.println("pw2 : "+session.getAttribute("pw2")); %> --%>
             </div>
             
             <div class="txts">
-                <input type="text" id="nick" name="nick" value="<%= session.getAttribute("userNick") %>">
+                <input type="text" id="nick" name="nick" value="">
                 <span data-placeholder="닉네임"></span>                
                 <input type="button" value="중복확인" id="confire" class="nickC">
             </div>
             
             <div class="txts">
-                <input type="text" id="email" name="email" value="<%= session.getAttribute("userEmail3") %>">
+                <input type="text" id="email" name="email" value="">
                 <span data-placeholder="이메일"></span>               
                 <input type="button" value="인증요청" id="confire" class="emailC">
             </div>
             
             <div class="txts">
-                  <input type="text" id="vcode" name="vcode" value="<%= session.getAttribute("userCode") %>">
+                  <input type="text" id="vcode" name="vcode" value="">
                   <span data-placeholder="인증번호"></span>
                   <input type="button" value="번호확인" id="confire" class="codeC">
              </div>
@@ -927,7 +850,6 @@
                 </div>
             </form> 
         </main>
-       <!--  <iframe name='ifrm' width='0' height='0' frameborder='0'></iframe> -->
         <input type="hidden" id="orgcode1" name="vcode" value="<%= session.getAttribute("orgcode1") %>">
  <footer>
         <div id="footme">
@@ -986,7 +908,6 @@
             %>
 
         </div>
-        <!-- 2020.04.21 지원홍  -->
         <div id="sidemenu">
             <div class="sidemenus">
                 <div class="sidemenut">개드립</div>
@@ -1310,121 +1231,199 @@
         			if(id.length > 12){ // id 길이 제한
         				alert("아이디는 12글자까지 가능합니다.");
         			} else {        				
-        				location.href="signUP2.do?id="+id+"&num=1"+"&pw1="+pw1+"&pw2="+pw2;
+        				//location.href="signUP2.do?id="+id+"&num=1"+"&pw1="+pw1+"&pw2="+pw2;
+        				$.ajax({
+               				url: "Update.jsp",
+               				type: "post",
+               				dataType: "json",
+               				data: {
+               					   action : "SignUp_Confire_Id",
+               					   id : $("#idtf").val()
+               					   },      	
+               				success: function(data){
+               					 if(data.result){
+               						 alert("사용 가능한 아이디 입니다.");
+               						 $("#idtf").removeClass("fail");
+               						 $("#idtf").addClass("success");
+               					}else{
+               						alert("중복된 아이디 입니다.");
+               						$("#idtf").removeClass("success");
+               						$("#idtf").addClass("fail");
+               					} 
+               				},
+               				complete: function(data){
+               				},
+               				error: function(request,status,error){
+               					alert("signUP_id_ajex_fail");
+               				}       						
+                		});
         			}
         		}else{
         			alert("아이디를 입력해주세요");
         		}
         	});
-        	$(".nickC").click(function(){
+        	//닉네임 중복 검사
+        	$(".nickC").click(function(){ 
         		var nick = $("#nick").val();
-        		var pw1 = $("#pw1").val();
-        		var pw2 = $("#pw2").val();
         		if(nick !=""){
-					location.href="signUP2.do?nick="+nick+"&num=2"+"&pw1="+pw1+"&pw2="+pw2;
+					//location.href="signUP2.do?nick="+nick+"&num=2"+"&pw1="+pw1+"&pw2="+pw2;
+        			$.ajax({
+           				url: "Update.jsp",
+           				type: "post",
+           				dataType: "json",
+           				data: {
+           					   action : "SignUp_Confire_Nick",
+           					   nick : $("#nick").val()
+           					   },      	
+           				success: function(data){
+           					 if(data.result){
+           						 alert("사용 가능한 닉네임 입니다.");
+           						 $("#nick").removeClass("fail");
+           						 $("#nick").addClass("success");
+           					}else{
+           						alert("중복된 닉네임 입니다.");
+           						$("#nick").removeClass("success");
+           						$("#nick").addClass("fail");
+           					} 
+           				},
+           				complete: function(data){
+           				},
+           				error: function(request,status,error){
+           					alert("signUP_nick_ajex_fail");
+           				}       						
+            		});
 				}else{
 					alert("닉네임을 입력해주세요");
 				}
         	});
         	$(".emailC").click(function(){
         		var email = $("#email").val();
-        		var pw1 = $("#pw1").val();
-        		var pw2 = $("#pw2").val();
         		// 정규식 패턴. 이메일 형식(x@x.x)이 아닐 경우 오류창 출력
     			var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
     			if(exptext.test(email) == false){
     				alert("이메일 형식이 올바르지 않습니다.");
     			} else {
     				if(email !=""){
-    					location.href="signUP2.do?email="+email+"&num=3"+"&pw1="+pw1+"&pw2="+pw2;
+    					//location.href="signUP2.do?email="+email+"&num=3"+"&pw1="+pw1+"&pw2="+pw2;
+    					$.ajax({
+               				url: "Update.jsp",
+               				type: "post",
+               				dataType: "json",
+               				data: {
+               					   action : "SignUp_Confire_Email",
+               					   email : $("#email").val()
+               					   },      	
+               				success: function(data){
+               					 if(data.result){
+               						 alert("인증 번호를 보냈습니다.");
+               						 $("#email").removeClass("fail");
+               						 $("#email").addClass("success");
+               						 $("#orgcode1").val(data.code);
+               					}else{
+               						alert("중복된 이메일 입니다.");
+               						$("#email").removeClass("success");
+               						$("#email").addClass("fail");
+               					} 
+               				},
+               				complete: function(data){
+               				},
+               				error: function(request,status,error){
+               					alert("signUP_email_ajex_fail");
+               				}       						
+                		});
     				}
     			}
         	});
         	
         	$(".codeC").click(function(){
         		var code = $("#vcode").val();
-        		var pw1 = $("#pw1").val();
-        		var pw2 = $("#pw2").val();
+        		var orgcode = $("#orgcode1").val();
         		if(code !=""){
-        			location.href="signUP2.do?code="+code+"&orgCode="+$("#orgcode1").val()+"&num=4"+"&pw1="+pw1+"&pw2="+pw2;
+        			//location.href="signUP2.do?code="+code+"&orgCode="+$("#orgcode1").val()+"&num=4"+"&pw1="+pw1+"&pw2="+pw2;
+        			if(orgcode != "null"){
+	        			$.ajax({
+	           				url: "Update.jsp",
+	           				type: "post",
+	           				dataType: "json",
+	           				data: {
+	           					   action : "SignUp_Confire_Code",
+	           					   code : $("#vcode").val(),
+	           					   orgcode : $("#orgcode1").val()
+	           					   },      	
+	           				success: function(data){
+	           					 if(data.result){
+	           						 alert("이메일 인증을 성공 하셨습니다.");
+	           						 $("#vcode").removeClass("fail");
+	           						 $("#vcode").addClass("success");           						 
+	           					}else{
+	           						alert("인증 번호가 다릅니다. 다시 시도 해주세요.");
+	           						$("#vcode").removeClass("success");
+	           						$("#vcode").addClass("fail");
+	           					} 
+	           				},
+	           				complete: function(data){
+	           				},
+	           				error: function(request,status,error){
+	           					alert("signUP_code_ajex_fail");
+	           				}
+            			});
+        			}else{
+    					alert("이메일 인증번호를 먼저 요청해 주세요.");
+    				}
         		}else{
         			alert("인증번호를 입력해주세요");
         		}
         	});
         	//아이디 부분
-        	if($("#idtf").val()!="null" && $("#idtf").val()!='duplication'){
+        	if($("#idtf").val()!="null" && $("#idtf").val()!=""){
         		$("#idtf").addClass("success");
         		$("#idtf").addClass("focus");
-        	}else if($("#idtf").val()=='duplication'){
-        		$("#idtf").val('');
-        		$("#idtf").focus();
-        		$("#idtf").addClass("fail");
-        		$("#idtf").addClass("focus");
         	}else{
-        		$("#idtf").val('');
-        		$("#idtf").focus();
-        		$("#idtf").addClass("focus");
+        		$("#idtf").removeClass("success");
+        		$("#idtf").removeClass("focus");
         	}
+        	
         	//1번째 비밀번호 부분
-        	if($("#pw1").val()!="null" && $("#pw1").val()!='nothing' ){
+        	if($("#pw1").val()!="null" && $("#pw1").val()!="" ){
         		$("#pw1").addClass("success");
         		$("#pw1").addClass("focus");
         		$("#pw2").addClass("success");
         		$("#pw2").addClass("focus");
-        	}else if($("#pw1").val()=='nothing'){
-        		$("#pw1").val('');
-        		$("#pw1").addClass("fail");
-        		$("#pw1").addClass("focus");
-        		//$("#pw1").focus();
-        		$("#pw2").val('');
-        		$("#pw2").addClass("fail");
-        		$("#pw2").addClass("focus");
         	}else{
-        		$("#pw1").val('');
-        		$("#pw2").val('');
+        		$("#pw1").removeClass("success");
+        		$("#pw1").removeClass("focus");
+        		$("#pw2").removeClass("success");
+        		$("#pw2").removeClass("focus");
         	}
         	
         	        	
         	//닉네임 부분
-        	if($("#nick").val()!="null" && $("#nick").val()!='duplication'){
+        	if($("#nick").val()!="null" && $("#nick").val()!=""){
         		$("#nick").addClass("success");
         		$("#nick").addClass("focus");
-        	}else if($("#nick").val()=='duplication'){
-        		$("#nick").val('');
-        		$("#nick").focus();
-        		$("#nick").addClass("fail");
-        		$("#nick").addClass("focus");
         	}else{
-        		$("#nick").val('');
+        		$("#nick").removeClass("success");
+        		$("#nick").removeClass("focus");
         	}
         	//이메일 부분
-        	if($("#email").val()!="null" && $("#email").val()!='duplication'){
+        	if($("#email").val()!="null" && $("#email").val()!=""){
         		$("#email").addClass("success");
         		$("#email").addClass("focus");
-        	}else if($("#email").val()=='duplication'){
-        		$("#email").val('이미 등록된 이메일이있습니다.');
-        		$("#email").focus();
-        		$("#email").addClass("fail");
-        		$("#email").addClass("focus");
         	}else{
-        		$("#email").val('');
+        		$("#email").removeClass("success");
+        		$("#email").removeClass("focus");
         	}
         	//인증코드 부분
-        	if($("#vcode").val()!="null" && $("#vcode").val()!='fail'){
+        	if($("#vcode").val()!="null" && $("#vcode").val()!=""){
         		$("#vcode").addClass("success");
         		$("#vcode").addClass("focus");
         		
-        	}else if($("#vcode").val()=='fail'){
-        		$("#vcode").val('잘못 입력하셨습니다.');
-        		$("#vcode").focus();
-        		$("#vcode").addClass("fail");
-        		$("#vcode").addClass("focus");        		
         	}else{
-        		$("#vcode").val('');
+        		$("#vcode").removeClass("success");
+        		$("#vocde").removeClass("focus");
         	}
         	
-  		//비밀번호 포커스 땠을때      	
-        	/*  $("#pw1").on("blur",function(){ */
+  		//비밀번호 포커스 땠을때    
         	$("#pw1").focusout(function(){
         		
         		var pw1 = $("#pw1").val();
@@ -1441,31 +1440,9 @@
         				 $("#pw1").addClass("fail");
 	                   	 $("#pw2").addClass("fail");
         			}
-        		}else{
-        			$("#pw1").addClass("fail");
-                  	$("#pw2").addClass("fail");
         		}
-        		//location.reload();
-        		/* 
-                 if($("#pw1").val().length==$("#pw2").val().length ){
-                	 
-                	 $("#pw1").removeClass("fail");
-                	 $("#pw2").removeClass("fail");
-                	 $("#pw1").removeClass("success");
-                	 $("#pw2").removeClass("success");
-                	 $("#pw1").addClass("success");
-                	 $("#pw2").addClass("success");
-                 }else{
-                	 $("#pw1").removeClass("success");
-                	 $("#pw2").removeClass("success");
-                	 $("#pw1").removeClass("fail");
-                	 $("#pw2").removeClass("fail");
-                	 $("#pw1").addClass("fail");
-                	 $("#pw2").addClass("fail");
-                 } */
              }); 
         	
-        	 /* $("#pw2").on("blur",function(){ */
         	$("#pw2").focusout(function(){
         		
         		var pw1 = $("#pw1").val();
@@ -1482,42 +1459,7 @@
         				 $("#pw1").addClass("fail");
 	                   	 $("#pw2").addClass("fail");
         			}
-        		}else{
-        			$("#pw1").addClass("fail");
-                  	$("#pw2").addClass("fail");
         		}
-        		//location.reload();
-        		/* 
-                 if($("#pw1").val().length==$("#pw2").val().length){
-                	 
-                	 $("#pw1").removeClass("fail");
-                	 $("#pw2").removeClass("fail");
-                	 $("#pw1").removeClass("success");
-                	 $("#pw2").removeClass("success").addClass("success");
-                	 $("#pw1").addClass("success");
-                	 $("#pw2").addClass("success");
-                 }else{
-                	 $("#pw1").removeClass("success");
-                	 $("#pw2").removeClass("success");
-                	 $("#pw1").removeClass("fail");
-                	 $("#pw2").removeClass("fail");
-                	 $("#pw1").addClass("fail");
-                	 $("#pw2").addClass("fail");
-                 } */
-             });
-        	 
-        	 $("#vcode").on("blur",function(){
-                 if($("#vcode").val().length==$("#pw2").val().length){
-                	 $("#vcode").removeClass("fail");
-                	 $("#vcode").removeClass("fail");
-                	 $("#vcode").addClass("success");
-                	 $("#vcode").addClass("success");
-                 }else{
-                	 $("#vcode").removeClass("success");
-                	 $("#vcode").removeClass("success");
-                	 $("#vcode").addClass("fail");
-                	 $("#pw2").addClass("fail");
-                 }
              }); 
              
         	 //회원가입 버튼 누르기
@@ -1548,14 +1490,38 @@
         			 $("#vcode").focus();        			 
         		 }        		 
         		 if(canJoin =="true"){
-        			 if($("#vcode").val() == $("#orgcode1").val()){
-        			 	$("#signup-form").submit();
-        			 }else{
-        				 $("#vcode").removeClass("fail");
-        				 $("#vcode").addClass("fail");
-        				 $("#vcode").addClass("focus");
-        				 $("#vcode").focus();
-        			 }
+        			 $.ajax({
+	           				url: "Update.jsp",
+	           				type: "post",
+	           				dataType: "json",
+	           				data: {
+	           					   action : "SignUp_Join",
+	           					   id : $("#idtf").val(),
+	           					   pw : $("#pw1").val(),
+	           					   email : $("#email").val(),
+	           					   nick : $("#nick").val()
+	           					   },      	
+	           				success: function(data){
+	           					 if(data.result){
+	           						 alert("회원가입을 성공 하셨습니다.");
+
+
+	           					}else{
+	           						alert("회원가입에 실패했습니다. 다시 시도 해주세요.");
+	           						$("#idtf").removeClass("success");
+	           						$("#pw1").removeClass("success");
+	           						$("#pw2").removeClass("success");
+	           						$("#nick").removeClass("success");
+	           						$("#vcode").removeClass("success");
+	           						$("#email").removeClass("success");
+	           					} 
+	           				},
+	           				complete: function(data){
+	           				},
+	           				error: function(request,status,error){
+	           					alert("signUP_join_ajex_fail");
+	           				}
+         			});
         		 }
         		 //$("#signup-form").submit();
         		 
@@ -1566,7 +1532,6 @@
          		location.href="Main.do";
          	});    
         });
-        /* 2020.04.21 지원홍 */
         /* 클릭 시 로그인 화면이 fadeIn으로 나타나면서 sidebar는 사라짐 */
         function loginfun(){
             $("#loginWrap").css("z-index", 100);
@@ -1579,7 +1544,6 @@
         function mypagefun(){
 			location.href="MyPage.do";
         }
-        /* 2020.04.21 지원홍 */
     </script>
 </body>
 </html>

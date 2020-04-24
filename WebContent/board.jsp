@@ -781,8 +781,8 @@
  <main> 
         <%
 			SearchDAO dao = new SearchDAO();
-			
-			int count = dao.listcall();
+        	String boardname = request.getParameter("boardname");
+			int count = dao.listcall(boardname);
 			String pages = request.getParameter("page");
 			int start = 0;
 			count = (int)Math.ceil((double)count/20);
