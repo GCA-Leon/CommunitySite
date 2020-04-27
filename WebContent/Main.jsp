@@ -762,7 +762,7 @@
                 <div class="board">
                     <table>
                           <tr>
-                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">게임 연재 / 정보 판</a></th>
+                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 연재 / 정보 판</a></th>
                           </tr>
                          <%
     				SearchDAO dao4 = new SearchDAO();
@@ -781,7 +781,7 @@
                 <div class="board">
                     <table>
                           <tr>
-                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">탈것 판</a></th>
+                             <th class="main_boardname"><a href="BoardSearchAction.do?boardname=board_ride&sc=null&keyword=null&pages=1&function=null">탈것 판</a></th>
                           </tr>
 				<%
     				SearchDAO dao5= new SearchDAO();
@@ -1127,6 +1127,7 @@
                         opacity: "100%"
                     });                        
                 });
+                 location.href="Random.do";
             });
             
            /*로그인화면 */

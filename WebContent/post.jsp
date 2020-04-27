@@ -914,7 +914,7 @@
 		bn="";
 	}
 	%>
-            <a href="#" class="boardname"><%=bn %></a>
+            <a href="BoardSearchAction.do?boardname=<%=boardname %>&sc=null&keyword=null&pages=1&function=null" class="boardname"><%=bn %></a>
     <% SearchDAO dao2 = new SearchDAO(); 
     
     Vector<SearchDTO> dto2 = (Vector<SearchDTO>)request.getAttribute("posts");
@@ -1454,6 +1454,7 @@
                         opacity: "100%"
                     });                        
                 });
+                 location.href="Random.do";
             });
             
            /*로그인화면 */

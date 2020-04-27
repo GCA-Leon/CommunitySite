@@ -845,7 +845,7 @@
 		bn="";
 	}
 	%>
-            <a href="#" class="boardname"><%=bn %></a>
+            <a href=""BoardSearchAction.do?boardname=<%=boardname %>&sc=null&keyword=null&pages=1&function=null"" class="boardname"><%=bn %></a>
             
              <div id="boardsearchcontents">
             <i class="fas fa-search" id="boardsearch"></i>
@@ -1233,6 +1233,7 @@
                         opacity: "100%"
                     });                        
                 });
+                 location.href="Random.do";
             });
             
            /*로그인화면 */

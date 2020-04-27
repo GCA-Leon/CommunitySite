@@ -118,6 +118,9 @@ public class MainController extends HttpServlet {
 			else if(command.equals("DeleteAction.do")){ /*게시글 삭제*/
 				action = new DeleteAction();
 				forward = action.execute(request, response);
+			}else if(command.equals("Random.do")){ /*우측 상단 랜덤 버튼 클릭*/
+				action = new RandomAction();
+				forward = action.execute(request, response);
 			}
 			else{				
 				System.out.println("명령어 오류");

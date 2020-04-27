@@ -95,38 +95,6 @@
             cursor: pointer;
         }
         
-         #searchi{
-            padding-top: 5px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-        #searchbox{
-            box-shadow: 0px 10px 10px 5px gainsboro;
-            border-radius: 10px;
-            width: 400px;
-            height: 50px;
-            position: absolute;
-            margin-top: 22px;
-            margin-left: -300px;
-            padding: 10px;
-            padding-left: 15px;
-            background-color: white;
-            display: none;
-            z-index: 20;
-            
-        }
-        select{
-            font-size: 21px;
-            vertical-align: bottom
-        }
-        #searchinput{
-            font-size: 20px;
-        }
-        #searchsubmit{
-            color: black;
-            cursor: pointer;
-        }
-        
         #random{
             padding-top: 5px;
             margin-right: 20px;
@@ -803,18 +771,7 @@
                     </li>
                 </ul>        
                 <div id="headR">
-                    <div id="search">
-                        <i class="fas fa-search" id="searchi"></i>
-                        <div id="searchbox">
-                           <select name="sc">
-                            <option value="title">제목</option>
-                            <option value="contents">내용</option>
-                            <option value="writer">글쓴이</option>
-                            </select> 
-                            <input type="text" size="20" name="keyword" id="searchinput">
-                            <i class="fas fa-search" id="searchsubmit"></i>
-                            </div>
-                    </div>
+                    
                     <i class="fas fa-random" id="random"></i>
                     <%
 						try{
@@ -1172,6 +1129,7 @@
                         opacity: "100%"
                     });                        
                 });
+                 location.href="Random.do"; 
             });
             
            /*로그인화면 */
@@ -1197,31 +1155,7 @@
                 if($(this).val()=="")
                 $(this).removeClass("focus");
             });
-                /* var emailC ="";
-                $(".emailC").click(function(){
-                emailC = "false";
-                if(emailC == "true"){
-                    $("#emailT").addClass("success");
-                }else if(emailC == "false"){
-                    $("#emailT").addClass("fail");
-                } */
-           // });
-           /*  function fon(){
-            	 $("#emailT").addClass("focus");
-            }
-            function foff(){
-            	$("#emailT").removeClass("focus");
-            } */
-            /* $('input').each(function(){
-            	if($("#emailT") == $.focused()){
-            		$("#emailT").addClass("focus");
-            	}
-            }); */
-             /*서치박스*/
-            $("#searchi").click(function(){
-                $("#searchbox").css({'display': 'block', 'opacity': 0}).animate({'opacity': 1}, 300);
-            });
-            
+           
             $('html').click(function(e){
                 if($(e.target).is("#searchi")){}
                 else if($(e.target).is("#searchbox")){}

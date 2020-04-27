@@ -21,7 +21,7 @@ public class BoardSearchAction implements Action{
 		String category = request.getParameter("sc");
 		String keyword = request.getParameter("keyword");
 		String function = request.getParameter("function");
-		int pages = Integer.parseInt(request.getParameter("pages"));
+		int pages = Integer.parseInt((String)request.getParameter("pages"));
 		pages = (pages-1)*20;
 		Vector<SearchDTO> v = dao.boardlist(boardname,category, keyword, pages);
 		request.setAttribute("list", v);
