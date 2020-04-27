@@ -215,7 +215,9 @@
             opacity: 0%;
         }
         .menu a{
-            margin: 5px;
+            color:black;
+            margin: 5px;   
+            display:none;         
         }
         .menu a:link{
             color: black;
@@ -228,6 +230,7 @@
         	height: 700px;
         	background-color: white;
         	border: 1px solid;
+        	overflow-y: auto;
         }
         /*게시글 작성부분*/
         #mainbtns{
@@ -461,6 +464,18 @@
             margin: 0 auto;
             
         }
+        .sidemenut a{
+        	color:black;
+        }
+        .sidemenut a:VISITED{
+        	color:black;
+        }
+		.sidemenuc a{
+        	color:black;
+		}
+        .sidemenuc a:VISITED{
+        	color:black;
+		}
         /*반응형*/
         @media(max-width:1500px){
             main{                
@@ -615,25 +630,25 @@
                 </div>
                 <ul id="headC">
                     <li id="i1">
-                        <div id="b1">개드립</div>
+                        <div id="b1"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null&function=null">베스트</a></div>
                         <div class="menubo">
                             <div id="menu1" class="menu">
-                               <a href="#">개드립</a>
-                               <a href="#">개드립 인기글</a>
+                               <a href="#">베스트</a>
+                               <a href="#">베스트 인기글</a>
                             </div>
                         </div>
                     </li>
-                    <li id="i2">
-                        <div id="b2">유저 개드립 </div>
+                     <li id="i2">
+                        <div id="b2"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null&function=null">유머 게시판</a> </div>
                         <div class="menubo">
                             <div id="menu2" class="menu">
-                               <a href="#">유저 개드립</a>
-                               <a href="#">붐업 베스트</a>
+                               <a href="#">유머 게시판</a>
+                               <a href="#">비추천 베스트</a>
                             </div>
                         </div>
                     </li>
                     <li id="i3">
-                        <div id="b3">읽을 거리 판</div>
+                        <div id="b3"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">읽을 거리 판</a></div>
                         <div class="menubo">
                             <div id="menu3" class="menu">
                                 <a href="#">전체글 보기</a>
@@ -650,7 +665,7 @@
                         </div>
                     </li>
                     <li id="i4">
-                        <div id="b4">커뮤니티</div>
+                        <div id="b4"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">커뮤니티</a></div>
                         <div class="menubo">
                             <div id="menu4" class="menu">
                                 <a href="#">탈것 판</a>
@@ -669,7 +684,7 @@
                         </div>
                     </li>
                     <li id="i5">
-                        <div id="b5">게임 판</div>
+                        <div id="b5"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">게임 판</a></div>
                         <div class="menubo">
                             <div id="menu5" class="menu">
                                 <a href="#">LOL</a>
@@ -683,18 +698,18 @@
                         </div>
                     </li>
                     <li id="i6">
-                        <div id="b6">놀이터</div>
+                        <div id="b6"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">기타</a></div>
                         <div class="menubo">
                             <div id="menu6" class="menu">
-                                <a href="#">개드립콘</a>
+                                <a href="#">이모티콘</a>
                                 <a href="#">걸그룹 판</a>
                                 <a href="#">짤방 판</a>
-                                <a href="#">시간 때우기 (게임)</a>
+                                <a href="#">플래시 게임</a>
                             </div>
                         </div>
                     </li>
                     <li id="i7">
-                        <div id="b7">기타</div>
+                        <div id="b7"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null&function=null">공지</a></div>
                         <div class="menubo">
                             <div id="menu7" class="menu">
                                 <a href="#">공지사항</a>
@@ -819,64 +834,64 @@
         <!-- 2020.04.21 지원홍  -->
         <div id="sidemenu">
             <div class="sidemenus">
-                <div class="sidemenut">개드립</div>
-                <div class="sidemenuc">개드립</div>
-                <div class="sidemenuc">개드립 인기글</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">베스트</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">베스트</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">베스트 인기글</a></div>
             </div>
             <div class="sidemenus">
-                <div class="sidemenut">유저 개드립</div>
-                <div class="sidemenuc">유저 개드립</div>
-                <div class="sidemenuc">붐업 베스트</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">유머 게시판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">유머 게시판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">붐업 베스트</a></div>
             </div>
             <div class="sidemenus">
-                <div class="sidemenut">읽을 거리 판</div>
-                <div class="sidemenuc">전체 글 보기</div>
-                <div class="sidemenuc">인기글</div>
-                <div class="sidemenuc">기묘한 이야기</div>
-                <div class="sidemenuc">호러 괴담</div>
-                <div class="sidemenuc">감동</div>
-                <div class="sidemenuc">자연</div>
-                <div class="sidemenuc">유머</div>
-                <div class="sidemenuc">과학</div>
-                <div class="sidemenuc">역사</div>
-                <div class="sidemenuc">기타 지식</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">읽을 거리 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">전체 글 보기</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">인기글</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">기묘한 이야기</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">호러 괴담</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">감동</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">자연</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">유머</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">과학</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">역사</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">기타 지식</a></div>
             </div>
             <div class="sidemenus">
-                <div class="sidemenut">커뮤니티</div>
-                <div class="sidemenuc">탈것 판</div>
-                <div class="sidemenuc">익명 판</div>
-                <div class="sidemenuc">컴퓨터 / IT 판</div>
-                <div class="sidemenuc">영상 판</div>
-                <div class="sidemenuc">고민 상담 판</div>
-                <div class="sidemenuc">스포츠 판</div>
-                <div class="sidemenuc">요리 판</div>
-                <div class="sidemenuc">덕후 판</div>
-                <div class="sidemenuc">창작 판</div>
-                <div class="sidemenuc">음악 판</div>
-                <div class="sidemenuc">정치 사회 판</div>
-                <div class="sidemenuc">젠더 이슈 판</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">커뮤니티</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">탈것 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">익명 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">컴퓨터 / IT 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">영상 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">고민 상담 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">스포츠 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">요리 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">덕후 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">창작 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">음악 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">정치 사회 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">젠더 이슈 판</a></div>
             </div>
              <div class="sidemenus">
-                <div class="sidemenut">게임 판</div>
-                <div class="sidemenuc">LOL</div>
-                <div class="sidemenuc">게임 연재 / 정보 판</div>
-                <div class="sidemenuc">게임 판</div>
-                <div class="sidemenuc">콘솔 게임 판</div>
-                <div class="sidemenuc">모바일 게임 판</div>
-                <div class="sidemenuc">로스트아크</div>
-                <div class="sidemenuc">던전 앤 파이터</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">LOL</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 연재 / 정보 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">콘솔 게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">모바일 게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">로스트아크</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">던전 앤 파이터</a></div>
             </div>
              <div class="sidemenus">
-                <div class="sidemenut">놀이터</div>
-                <div class="sidemenuc">개드립콘</div>
-                <div class="sidemenuc">걸그룹 판</div>
-                <div class="sidemenuc">짤방 판</div>
-                <div class="sidemenuc">시간 때우기 (게임)</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">기타</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">개드립콘</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">걸그룹 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">짤방 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">플래시 게임</a></div>
             </div>
              <div class="sidemenus">
-                <div class="sidemenut">기타</div>
-                <div class="sidemenuc">공지사항</div>
-                <div class="sidemenuc">건의 신고 판</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_notice&sc=null&keyword=null&pages=1&function=null">공지</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_notice&sc=null&keyword=null&pages=1&function=null">공지사항</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_notice&sc=null&keyword=null&pages=1&function=null">건의 신고 판</a></div>
             </div>
         </div>
         </div>
@@ -927,125 +942,137 @@
                 
             });
             
-             $("#headC li >div").mouseenter(function(){
-               if($(this).is("#b1")){
-                   
-                   $("#menu1").css("opacity","100%");
-                   $("#menu1").css("width","0px");
-                   $("#menu1").css("height","0px");
-                   $("#menu1").animate({width : "200px",height:"100px"});
-                  
-               }
-                else if($(this).is("#b2")){
+            $("#headC li div").mouseenter(function(){                
+                if($(this).is("#b1")){
                     
-                   $("#menu2").css("opacity","100%");
-                   $("#menu2").css("width","0px");
-                    $("#menu2").css("height","0px");
-                   $("#menu2").animate({width : "200px",height:"100px"});
-               }
-                else if($(this).is("#b3")){
-                    
-                   $("#menu3").css("opacity","100%");
-                   $("#menu3").css("width","0px");
-                    $("#menu3").css("height","0px");
-                   $("#menu3").animate({width : "200px",height:"350px"});
-                    
-               }
-                else if($(this).is("#b4")){
-                    
-                   $("#menu4").css("opacity","100%");
-                   $("#menu4").css("width","0px");
-                    $("#menu4").css("height","0px");
-                   $("#menu4").animate({width : "200px",height:"410px"});
-                    
-               }
-                else if($(this).is("#b5")){
-                    
-                   $("#menu5").css("opacity","100%");
-                   $("#menu5").css("width","0px");
-                    $("#menu5").css("height","0px");
-                   $("#menu5").animate({width : 
-                    "200px",height:"250px"});
-                    
-               }
-                else if($(this).is("#b6")){
-                   $("#menu6").css("opacity","100%");
-                   $("#menu6").css("width","0px");
-                    $("#menu6").css("height","0px");
-                   $("#menu6").animate({width : "200px",height:"160px"});
-                    
-               }
-                else if($(this).is("#b7")){
-                   $("#menu7").css("opacity","100%");
-                   $("#menu7").css("width","0px");
-                    $("#menu7").css("height","0px");
-                   $("#menu7").animate({width : "200px",height:"100px"});
-                    
-               }
-               
-                
-            });
+                    $("#menu1").css("opacity","100%");
+                    $("#menu1").css("width","0px");
+                    $("#menu1").css("height","0px");
+                    $("#menu1").animate({width : "200px",height:"100px"});
+                   $("#menu1 a").css("display", "block");
+                }
+                 else if($(this).is("#b2")){
+                     
+                    $("#menu2").css("opacity","100%");
+                    $("#menu2").css("width","0px");
+                     $("#menu2").css("height","0px");
+                    $("#menu2").animate({width : "200px",height:"100px"});
+                    $("#menu2 a").css("display", "block");
+                }
+                 else if($(this).is("#b3")){
+                     
+                    $("#menu3").css("opacity","100%");
+                    $("#menu3").css("width","0px");
+                     $("#menu3").css("height","0px");
+                    $("#menu3").animate({width : "200px",height:"350px"});
+                    $("#menu3 a").css("display", "block");
+                }
+                 else if($(this).is("#b4")){
+                     
+                    $("#menu4").css("opacity","100%");
+                    $("#menu4").css("width","0px");
+                     $("#menu4").css("height","0px");
+                    $("#menu4").animate({width : "200px",height:"410px"});
+                    $("#menu4 a").css("display", "block");
+                }
+                 else if($(this).is("#b5")){
+                     
+                    $("#menu5").css("opacity","100%");
+                    $("#menu5").css("width","0px");
+                     $("#menu5").css("height","0px");
+                    $("#menu5").animate({width : 
+                     "200px",height:"250px"});
+                    $("#menu5 a").css("display", "block");
+                }
+                 else if($(this).is("#b6")){
+                    $("#menu6").css("opacity","100%");
+                    $("#menu6").css("width","0px");
+                     $("#menu6").css("height","0px");
+                    $("#menu6").animate({width : "200px",height:"160px"});
+                    $("#menu6 a").css("display", "block");
+                }
+                 else if($(this).is("#b7")){
+                    $("#menu7").css("opacity","100%");
+                    $("#menu7").css("width","0px");
+                     $("#menu7").css("height","0px");
+                    $("#menu7").animate({width : "200px",height:"100px"});
+                    $("#menu7 a").css("display", "block");
+                }
+                 
+             });
+             
+             
           
-            $("#headC li").mouseleave(function(){
-                if($(this).is("#i1")){
-                    $("#menu1").animate({
-                        width : "0px",
-                        opacity:"0%",
-                        height:"0px"
-                    },500,function(){
-                        
-                   $("#menu1").css("width","200px");
-                    });
-               }
-                else if($(this).is("#i2")){
-                    $("#menu2").animate({
-                        width:"0px",
+             
+             $("#headC li").mouseleave(function(){
+                 if($(this).is("#i1")){
+                     $("#menu1").animate({
+                         width : "0px",
                          opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu2").css("width","200px");
-               }
-                else if($(this).is("#i3")){
-                    $("#menu3").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu3").css("width","200px");
-               }
-                else if($(this).is("#i4")){
-                    $("#menu4").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu4").css("width","200px");
-               }
-                else if($(this).is("#i5")){
-                    $("#menu5").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu5").css("width","200px");
-               }
-                else if($(this).is("#i6")){
-                    $("#menu6").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu6").css("width","200px");
-               }
-                else if($(this).is("#i7")){
-                    $("#menu7").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu7").css("width","200px");
-               }
-            });
+                         height:"0px"
+                     },500,function(){
+                         
+                    $("#menu1").css("width","200px");
+                    $("#menu1 a").css("display", "none"); 	
+                     });
+                     
+                }
+                 else if($(this).is("#i2")){
+                     $("#menu2").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu2").css("width","200px");
+                    $("#menu2 a").css("display", "none");
+                }
+                 else if($(this).is("#i3")){
+                     $("#menu3").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu3").css("width","200px");
+                    $("#menu3 a").css("display", "none");
+                }
+                 else if($(this).is("#i4")){
+                     $("#menu4").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu4").css("width","200px");
+                    $("#menu4 a").css("display", "none");
+                }
+                 else if($(this).is("#i5")){
+                     $("#menu5").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu5").css("width","200px");
+                    $("#menu5 a").css("display", "none");
+                }
+                 else if($(this).is("#i6")){
+                     $("#menu6").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu6").css("width","200px");
+                    $("#menu6 a").css("display", "none");
+                }
+                 else if($(this).is("#i7")){
+                     $("#menu7").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu7").css("width","200px");
+                    $("#menu7 a").css("display", "none");
+                }
+                 
+             });
             
             /*로그인버튼*/
              $("#loginBtn").click(function(){

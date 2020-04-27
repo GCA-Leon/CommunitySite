@@ -549,6 +549,18 @@
         .bottom-text2 a{
         	color: black;
         }
+        .sidemenut a{
+        	color:black;
+        }
+        .sidemenut a:VISITED{
+        	color:black;
+        }
+		.sidemenuc a{
+        	color:black;
+		}
+        .sidemenuc a:VISITED{
+        	color:black;
+		}
         /*반응형*/
         @media(max-width:1500px){
             main{                
@@ -904,64 +916,64 @@
         <!-- 2020.04.21 지원홍  -->
         <div id="sidemenu">
             <div class="sidemenus">
-                <div class="sidemenut">개드립</div>
-                <div class="sidemenuc">개드립</div>
-                <div class="sidemenuc">개드립 인기글</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">베스트</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">베스트</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_best&sc=null&keyword=null&pages=1&function=null">베스트 인기글</a></div>
             </div>
             <div class="sidemenus">
-                <div class="sidemenut">유저 개드립</div>
-                <div class="sidemenuc">유저 개드립</div>
-                <div class="sidemenuc">붐업 베스트</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">유머 게시판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">유머 게시판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_normal&sc=null&keyword=null&pages=1&function=null">붐업 베스트</a></div>
             </div>
             <div class="sidemenus">
-                <div class="sidemenut">읽을 거리 판</div>
-                <div class="sidemenuc">전체 글 보기</div>
-                <div class="sidemenuc">인기글</div>
-                <div class="sidemenuc">기묘한 이야기</div>
-                <div class="sidemenuc">호러 괴담</div>
-                <div class="sidemenuc">감동</div>
-                <div class="sidemenuc">자연</div>
-                <div class="sidemenuc">유머</div>
-                <div class="sidemenuc">과학</div>
-                <div class="sidemenuc">역사</div>
-                <div class="sidemenuc">기타 지식</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">읽을 거리 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">전체 글 보기</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">인기글</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">기묘한 이야기</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">호러 괴담</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">감동</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">자연</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">유머</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">과학</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">역사</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_read&sc=null&keyword=null&pages=1&function=null">기타 지식</a></div>
             </div>
             <div class="sidemenus">
-                <div class="sidemenut">커뮤니티</div>
-                <div class="sidemenuc">탈것 판</div>
-                <div class="sidemenuc">익명 판</div>
-                <div class="sidemenuc">컴퓨터 / IT 판</div>
-                <div class="sidemenuc">영상 판</div>
-                <div class="sidemenuc">고민 상담 판</div>
-                <div class="sidemenuc">스포츠 판</div>
-                <div class="sidemenuc">요리 판</div>
-                <div class="sidemenuc">덕후 판</div>
-                <div class="sidemenuc">창작 판</div>
-                <div class="sidemenuc">음악 판</div>
-                <div class="sidemenuc">정치 사회 판</div>
-                <div class="sidemenuc">젠더 이슈 판</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">커뮤니티</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">탈것 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">익명 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">컴퓨터 / IT 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">영상 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">고민 상담 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">스포츠 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">요리 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">덕후 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">창작 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">음악 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">정치 사회 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_community&sc=null&keyword=null&pages=1&function=null">젠더 이슈 판</a></div>
             </div>
              <div class="sidemenus">
-                <div class="sidemenut">게임 판</div>
-                <div class="sidemenuc">LOL</div>
-                <div class="sidemenuc">게임 연재 / 정보 판</div>
-                <div class="sidemenuc">게임 판</div>
-                <div class="sidemenuc">콘솔 게임 판</div>
-                <div class="sidemenuc">모바일 게임 판</div>
-                <div class="sidemenuc">로스트아크</div>
-                <div class="sidemenuc">던전 앤 파이터</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">LOL</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 연재 / 정보 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">콘솔 게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">모바일 게임 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">로스트아크</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_game&sc=null&keyword=null&pages=1&function=null">던전 앤 파이터</a></div>
             </div>
              <div class="sidemenus">
-                <div class="sidemenut">놀이터</div>
-                <div class="sidemenuc">개드립콘</div>
-                <div class="sidemenuc">걸그룹 판</div>
-                <div class="sidemenuc">짤방 판</div>
-                <div class="sidemenuc">시간 때우기 (게임)</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">기타</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">개드립콘</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">걸그룹 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">짤방 판</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_etc&sc=null&keyword=null&pages=1&function=null">플래시 게임</a></div>
             </div>
              <div class="sidemenus">
-                <div class="sidemenut">기타</div>
-                <div class="sidemenuc">공지사항</div>
-                <div class="sidemenuc">건의 신고 판</div>
+                <div class="sidemenut"><a href="BoardSearchAction.do?boardname=board_notice&sc=null&keyword=null&pages=1&function=null">공지</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_notice&sc=null&keyword=null&pages=1&function=null">공지사항</a></div>
+                <div class="sidemenuc"><a href="BoardSearchAction.do?boardname=board_notice&sc=null&keyword=null&pages=1&function=null">건의 신고 판</a></div>
             </div>
         </div>
         </div>
