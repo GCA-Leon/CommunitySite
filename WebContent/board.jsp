@@ -769,12 +769,15 @@
         
  <main> 
         <%
+       
 			SearchDAO dao = new SearchDAO();
         	String boardname = request.getParameter("boardname");
         	String fff = request.getParameter("function");
         	String sc = "";
         	String keyword = "";
         	int count = 0;
+        	Vector<SearchDTO> dto = null;
+        try{
         	if(fff.equals("yes")){
         		System.out.println("앙");
         		sc = request.getParameter("sc");
@@ -789,12 +792,18 @@
 			String pages = request.getParameter("page");
 			int start = 0;
 			count = (int)Math.ceil((double)count/20);
-				Vector<SearchDTO> dto = (Vector<SearchDTO>)request.getAttribute("list");
+			dto = (Vector<SearchDTO>)request.getAttribute("list");
 			if(pages != null){
 				start = Integer.parseInt(pages);
 				start = (start-1)*20;
 				
 			}
+       }catch(Exception e){
+        	System.out.println("여기가 문제인듯");
+        	System.out.println("fff : "+fff);
+        	System.out.println("sc : "+sc);
+        	System.out.println("keyword : "+keyword);
+        }
 		%>
 		
 	<% /* 게시판 이름 선정*/

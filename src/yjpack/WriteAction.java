@@ -34,7 +34,7 @@ public class WriteAction implements Action{
 		request.setAttribute("boardname",boardname);
 		
 		forward.setRedirect(false);
-		forward.setNextPage("BoardSearchAction.do?boardname="+boardname+"&sc=null&keyword=null&pages=1");
+		forward.setNextPage("BoardSearchAction.do?boardname="+boardname+"&sc=null&keyword=null&pages=1&function=null");
 		
 		return forward;
 	}
