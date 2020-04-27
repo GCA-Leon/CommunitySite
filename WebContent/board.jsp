@@ -196,7 +196,6 @@
             
         }
         .menu a{
-           
             color:black;
             margin: 5px;   
             display:none;         
