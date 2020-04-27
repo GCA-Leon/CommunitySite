@@ -215,7 +215,9 @@
             opacity: 0%;
         }
         .menu a{
-            margin: 5px;
+            color:black;
+            margin: 5px;   
+            display:none;         
         }
         .menu a:link{
             color: black;
@@ -228,6 +230,7 @@
         	height: 700px;
         	background-color: white;
         	border: 1px solid;
+        	overflow-y: auto;
         }
         /*게시글 작성부분*/
         #mainbtns{
@@ -927,125 +930,137 @@
                 
             });
             
-             $("#headC li >div").mouseenter(function(){
-               if($(this).is("#b1")){
-                   
-                   $("#menu1").css("opacity","100%");
-                   $("#menu1").css("width","0px");
-                   $("#menu1").css("height","0px");
-                   $("#menu1").animate({width : "200px",height:"100px"});
-                  
-               }
-                else if($(this).is("#b2")){
+            $("#headC li div").mouseenter(function(){                
+                if($(this).is("#b1")){
                     
-                   $("#menu2").css("opacity","100%");
-                   $("#menu2").css("width","0px");
-                    $("#menu2").css("height","0px");
-                   $("#menu2").animate({width : "200px",height:"100px"});
-               }
-                else if($(this).is("#b3")){
-                    
-                   $("#menu3").css("opacity","100%");
-                   $("#menu3").css("width","0px");
-                    $("#menu3").css("height","0px");
-                   $("#menu3").animate({width : "200px",height:"350px"});
-                    
-               }
-                else if($(this).is("#b4")){
-                    
-                   $("#menu4").css("opacity","100%");
-                   $("#menu4").css("width","0px");
-                    $("#menu4").css("height","0px");
-                   $("#menu4").animate({width : "200px",height:"410px"});
-                    
-               }
-                else if($(this).is("#b5")){
-                    
-                   $("#menu5").css("opacity","100%");
-                   $("#menu5").css("width","0px");
-                    $("#menu5").css("height","0px");
-                   $("#menu5").animate({width : 
-                    "200px",height:"250px"});
-                    
-               }
-                else if($(this).is("#b6")){
-                   $("#menu6").css("opacity","100%");
-                   $("#menu6").css("width","0px");
-                    $("#menu6").css("height","0px");
-                   $("#menu6").animate({width : "200px",height:"160px"});
-                    
-               }
-                else if($(this).is("#b7")){
-                   $("#menu7").css("opacity","100%");
-                   $("#menu7").css("width","0px");
-                    $("#menu7").css("height","0px");
-                   $("#menu7").animate({width : "200px",height:"100px"});
-                    
-               }
-               
-                
-            });
+                    $("#menu1").css("opacity","100%");
+                    $("#menu1").css("width","0px");
+                    $("#menu1").css("height","0px");
+                    $("#menu1").animate({width : "200px",height:"100px"});
+                   $("#menu1 a").css("display", "block");
+                }
+                 else if($(this).is("#b2")){
+                     
+                    $("#menu2").css("opacity","100%");
+                    $("#menu2").css("width","0px");
+                     $("#menu2").css("height","0px");
+                    $("#menu2").animate({width : "200px",height:"100px"});
+                    $("#menu2 a").css("display", "block");
+                }
+                 else if($(this).is("#b3")){
+                     
+                    $("#menu3").css("opacity","100%");
+                    $("#menu3").css("width","0px");
+                     $("#menu3").css("height","0px");
+                    $("#menu3").animate({width : "200px",height:"350px"});
+                    $("#menu3 a").css("display", "block");
+                }
+                 else if($(this).is("#b4")){
+                     
+                    $("#menu4").css("opacity","100%");
+                    $("#menu4").css("width","0px");
+                     $("#menu4").css("height","0px");
+                    $("#menu4").animate({width : "200px",height:"410px"});
+                    $("#menu4 a").css("display", "block");
+                }
+                 else if($(this).is("#b5")){
+                     
+                    $("#menu5").css("opacity","100%");
+                    $("#menu5").css("width","0px");
+                     $("#menu5").css("height","0px");
+                    $("#menu5").animate({width : 
+                     "200px",height:"250px"});
+                    $("#menu5 a").css("display", "block");
+                }
+                 else if($(this).is("#b6")){
+                    $("#menu6").css("opacity","100%");
+                    $("#menu6").css("width","0px");
+                     $("#menu6").css("height","0px");
+                    $("#menu6").animate({width : "200px",height:"160px"});
+                    $("#menu6 a").css("display", "block");
+                }
+                 else if($(this).is("#b7")){
+                    $("#menu7").css("opacity","100%");
+                    $("#menu7").css("width","0px");
+                     $("#menu7").css("height","0px");
+                    $("#menu7").animate({width : "200px",height:"100px"});
+                    $("#menu7 a").css("display", "block");
+                }
+                 
+             });
+             
+             
           
-            $("#headC li").mouseleave(function(){
-                if($(this).is("#i1")){
-                    $("#menu1").animate({
-                        width : "0px",
-                        opacity:"0%",
-                        height:"0px"
-                    },500,function(){
-                        
-                   $("#menu1").css("width","200px");
-                    });
-               }
-                else if($(this).is("#i2")){
-                    $("#menu2").animate({
-                        width:"0px",
+             
+             $("#headC li").mouseleave(function(){
+                 if($(this).is("#i1")){
+                     $("#menu1").animate({
+                         width : "0px",
                          opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu2").css("width","200px");
-               }
-                else if($(this).is("#i3")){
-                    $("#menu3").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu3").css("width","200px");
-               }
-                else if($(this).is("#i4")){
-                    $("#menu4").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu4").css("width","200px");
-               }
-                else if($(this).is("#i5")){
-                    $("#menu5").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu5").css("width","200px");
-               }
-                else if($(this).is("#i6")){
-                    $("#menu6").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu6").css("width","200px");
-               }
-                else if($(this).is("#i7")){
-                    $("#menu7").animate({
-                        width:"0px",
-                         opacity:"0%",
-                        height:"0px"
-                        });
-                   $("#menu7").css("width","200px");
-               }
-            });
+                         height:"0px"
+                     },500,function(){
+                         
+                    $("#menu1").css("width","200px");
+                    $("#menu1 a").css("display", "none"); 	
+                     });
+                     
+                }
+                 else if($(this).is("#i2")){
+                     $("#menu2").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu2").css("width","200px");
+                    $("#menu2 a").css("display", "none");
+                }
+                 else if($(this).is("#i3")){
+                     $("#menu3").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu3").css("width","200px");
+                    $("#menu3 a").css("display", "none");
+                }
+                 else if($(this).is("#i4")){
+                     $("#menu4").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu4").css("width","200px");
+                    $("#menu4 a").css("display", "none");
+                }
+                 else if($(this).is("#i5")){
+                     $("#menu5").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu5").css("width","200px");
+                    $("#menu5 a").css("display", "none");
+                }
+                 else if($(this).is("#i6")){
+                     $("#menu6").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu6").css("width","200px");
+                    $("#menu6 a").css("display", "none");
+                }
+                 else if($(this).is("#i7")){
+                     $("#menu7").animate({
+                         width:"0px",
+                          opacity:"0%",
+                         height:"0px"
+                         });
+                    $("#menu7").css("width","200px");
+                    $("#menu7 a").css("display", "none");
+                }
+                 
+             });
             
             /*로그인버튼*/
              $("#loginBtn").click(function(){
